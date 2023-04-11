@@ -1,6 +1,6 @@
 {
   "name": "@haveanicedavid/regen-ts",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Typescript definitions and methods for Regen ledger",
   "author": "David Daniel <david.daniel@regen.network>",
   "homepage": "https://github.com/haveanicedavid/regen-ts#readme",
