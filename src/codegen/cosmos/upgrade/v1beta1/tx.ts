@@ -8,7 +8,7 @@ import { isSet } from "../../../helpers";
  */
 
 export interface MsgSoftwareUpgrade {
-  /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
+  /** authority is the address of the governance account. */
   authority: string;
   /** plan is the upgrade plan. */
 
@@ -21,7 +21,7 @@ export interface MsgSoftwareUpgrade {
  */
 
 export interface MsgSoftwareUpgradeSDKType {
-  /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
+  /** authority is the address of the governance account. */
   authority: string;
   /** plan is the upgrade plan. */
 
@@ -48,7 +48,7 @@ export interface MsgSoftwareUpgradeResponseSDKType {}
  */
 
 export interface MsgCancelUpgrade {
-  /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
+  /** authority is the address of the governance account. */
   authority: string;
 }
 /**
@@ -58,7 +58,7 @@ export interface MsgCancelUpgrade {
  */
 
 export interface MsgCancelUpgradeSDKType {
-  /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
+  /** authority is the address of the governance account. */
   authority: string;
 }
 /**

@@ -1,7 +1,6 @@
 import { Any, AnySDKType } from "../../../google/protobuf/any";
 import { Coin, CoinSDKType } from "../../base/v1beta1/coin";
-import { VoteOption, VoteOptionSDKType, WeightedVoteOption, WeightedVoteOptionSDKType, Params, ParamsSDKType } from "./gov";
-import { Timestamp, TimestampSDKType } from "../../../google/protobuf/timestamp";
+import { VoteOption, VoteOptionSDKType, WeightedVoteOption, WeightedVoteOptionSDKType } from "./gov";
 import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
 /**
@@ -9,73 +8,29 @@ import { Long } from "../../../helpers";
  * proposal Content.
  */
 export interface MsgSubmitProposal {
-    /** messages are the arbitrary messages to be executed if proposal passes. */
     messages: Any[];
-    /** initial_deposit is the deposit value that must be paid at proposal submission. */
     initialDeposit: Coin[];
-    /** proposer is the account address of the proposer. */
     proposer: string;
     /** metadata is any arbitrary metadata attached to the proposal. */
     metadata: string;
-    /**
-     * title is the title of the proposal.
-     *
-     * Since: cosmos-sdk 0.47
-     */
-    title: string;
-    /**
-     * summary is the summary of the proposal
-     *
-     * Since: cosmos-sdk 0.47
-     */
-    summary: string;
-    /**
-     * expedided defines if the proposal is expedited or not
-     *
-     * Since: cosmos-sdk 0.48
-     */
-    expedited: boolean;
 }
 /**
  * MsgSubmitProposal defines an sdk.Msg type that supports submitting arbitrary
  * proposal Content.
  */
 export interface MsgSubmitProposalSDKType {
-    /** messages are the arbitrary messages to be executed if proposal passes. */
     messages: AnySDKType[];
-    /** initial_deposit is the deposit value that must be paid at proposal submission. */
     initial_deposit: CoinSDKType[];
-    /** proposer is the account address of the proposer. */
     proposer: string;
     /** metadata is any arbitrary metadata attached to the proposal. */
     metadata: string;
-    /**
-     * title is the title of the proposal.
-     *
-     * Since: cosmos-sdk 0.47
-     */
-    title: string;
-    /**
-     * summary is the summary of the proposal
-     *
-     * Since: cosmos-sdk 0.47
-     */
-    summary: string;
-    /**
-     * expedided defines if the proposal is expedited or not
-     *
-     * Since: cosmos-sdk 0.48
-     */
-    expedited: boolean;
 }
 /** MsgSubmitProposalResponse defines the Msg/SubmitProposal response type. */
 export interface MsgSubmitProposalResponse {
-    /** proposal_id defines the unique id of the proposal. */
     proposalId: Long;
 }
 /** MsgSubmitProposalResponse defines the Msg/SubmitProposal response type. */
 export interface MsgSubmitProposalResponseSDKType {
-    /** proposal_id defines the unique id of the proposal. */
     proposal_id: Long;
 }
 /**
@@ -106,24 +61,16 @@ export interface MsgExecLegacyContentResponseSDKType {
 }
 /** MsgVote defines a message to cast a vote. */
 export interface MsgVote {
-    /** proposal_id defines the unique id of the proposal. */
     proposalId: Long;
-    /** voter is the voter address for the proposal. */
     voter: string;
-    /** option defines the vote option. */
     option: VoteOption;
-    /** metadata is any arbitrary metadata attached to the Vote. */
     metadata: string;
 }
 /** MsgVote defines a message to cast a vote. */
 export interface MsgVoteSDKType {
-    /** proposal_id defines the unique id of the proposal. */
     proposal_id: Long;
-    /** voter is the voter address for the proposal. */
     voter: string;
-    /** option defines the vote option. */
     option: VoteOptionSDKType;
-    /** metadata is any arbitrary metadata attached to the Vote. */
     metadata: string;
 }
 /** MsgVoteResponse defines the Msg/Vote response type. */
@@ -134,24 +81,16 @@ export interface MsgVoteResponseSDKType {
 }
 /** MsgVoteWeighted defines a message to cast a vote. */
 export interface MsgVoteWeighted {
-    /** proposal_id defines the unique id of the proposal. */
     proposalId: Long;
-    /** voter is the voter address for the proposal. */
     voter: string;
-    /** options defines the weighted vote options. */
     options: WeightedVoteOption[];
-    /** metadata is any arbitrary metadata attached to the VoteWeighted. */
     metadata: string;
 }
 /** MsgVoteWeighted defines a message to cast a vote. */
 export interface MsgVoteWeightedSDKType {
-    /** proposal_id defines the unique id of the proposal. */
     proposal_id: Long;
-    /** voter is the voter address for the proposal. */
     voter: string;
-    /** options defines the weighted vote options. */
     options: WeightedVoteOptionSDKType[];
-    /** metadata is any arbitrary metadata attached to the VoteWeighted. */
     metadata: string;
 }
 /** MsgVoteWeightedResponse defines the Msg/VoteWeighted response type. */
@@ -162,20 +101,14 @@ export interface MsgVoteWeightedResponseSDKType {
 }
 /** MsgDeposit defines a message to submit a deposit to an existing proposal. */
 export interface MsgDeposit {
-    /** proposal_id defines the unique id of the proposal. */
     proposalId: Long;
-    /** depositor defines the deposit addresses from the proposals. */
     depositor: string;
-    /** amount to be deposited by depositor. */
     amount: Coin[];
 }
 /** MsgDeposit defines a message to submit a deposit to an existing proposal. */
 export interface MsgDepositSDKType {
-    /** proposal_id defines the unique id of the proposal. */
     proposal_id: Long;
-    /** depositor defines the deposit addresses from the proposals. */
     depositor: string;
-    /** amount to be deposited by depositor. */
     amount: CoinSDKType[];
 }
 /** MsgDepositResponse defines the Msg/Deposit response type. */
@@ -183,96 +116,6 @@ export interface MsgDepositResponse {
 }
 /** MsgDepositResponse defines the Msg/Deposit response type. */
 export interface MsgDepositResponseSDKType {
-}
-/**
- * MsgUpdateParams is the Msg/UpdateParams request type.
- *
- * Since: cosmos-sdk 0.47
- */
-export interface MsgUpdateParams {
-    /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
-    authority: string;
-    /**
-     * params defines the x/gov parameters to update.
-     *
-     * NOTE: All parameters must be supplied.
-     */
-    params?: Params;
-}
-/**
- * MsgUpdateParams is the Msg/UpdateParams request type.
- *
- * Since: cosmos-sdk 0.47
- */
-export interface MsgUpdateParamsSDKType {
-    /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
-    authority: string;
-    /**
-     * params defines the x/gov parameters to update.
-     *
-     * NOTE: All parameters must be supplied.
-     */
-    params?: ParamsSDKType;
-}
-/**
- * MsgUpdateParamsResponse defines the response structure for executing a
- * MsgUpdateParams message.
- *
- * Since: cosmos-sdk 0.47
- */
-export interface MsgUpdateParamsResponse {
-}
-/**
- * MsgUpdateParamsResponse defines the response structure for executing a
- * MsgUpdateParams message.
- *
- * Since: cosmos-sdk 0.47
- */
-export interface MsgUpdateParamsResponseSDKType {
-}
-/**
- * MsgCancelProposal is the Msg/CancelProposal request type.
- *
- * Since: cosmos-sdk 0.48
- */
-export interface MsgCancelProposal {
-    proposalId: Long;
-    proposer: string;
-}
-/**
- * MsgCancelProposal is the Msg/CancelProposal request type.
- *
- * Since: cosmos-sdk 0.48
- */
-export interface MsgCancelProposalSDKType {
-    proposal_id: Long;
-    proposer: string;
-}
-/**
- * MsgCancelProposalResponse defines the response structure for executing a
- * MsgCancelProposal message.
- *
- * Since: cosmos-sdk 0.48
- */
-export interface MsgCancelProposalResponse {
-    proposalId: Long;
-    /** canceled_time is the time when proposal is canceled. */
-    canceledTime?: Timestamp;
-    /** canceled_height defines the block height at which the proposal is canceled. */
-    canceledHeight: Long;
-}
-/**
- * MsgCancelProposalResponse defines the response structure for executing a
- * MsgCancelProposal message.
- *
- * Since: cosmos-sdk 0.48
- */
-export interface MsgCancelProposalResponseSDKType {
-    proposal_id: Long;
-    /** canceled_time is the time when proposal is canceled. */
-    canceled_time?: TimestampSDKType;
-    /** canceled_height defines the block height at which the proposal is canceled. */
-    canceled_height: Long;
 }
 export declare const MsgSubmitProposal: {
     encode(message: MsgSubmitProposal, writer?: _m0.Writer): _m0.Writer;
@@ -343,32 +186,4 @@ export declare const MsgDepositResponse: {
     fromJSON(_: any): MsgDepositResponse;
     toJSON(_: MsgDepositResponse): unknown;
     fromPartial(_: Partial<MsgDepositResponse>): MsgDepositResponse;
-};
-export declare const MsgUpdateParams: {
-    encode(message: MsgUpdateParams, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateParams;
-    fromJSON(object: any): MsgUpdateParams;
-    toJSON(message: MsgUpdateParams): unknown;
-    fromPartial(object: Partial<MsgUpdateParams>): MsgUpdateParams;
-};
-export declare const MsgUpdateParamsResponse: {
-    encode(_: MsgUpdateParamsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateParamsResponse;
-    fromJSON(_: any): MsgUpdateParamsResponse;
-    toJSON(_: MsgUpdateParamsResponse): unknown;
-    fromPartial(_: Partial<MsgUpdateParamsResponse>): MsgUpdateParamsResponse;
-};
-export declare const MsgCancelProposal: {
-    encode(message: MsgCancelProposal, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCancelProposal;
-    fromJSON(object: any): MsgCancelProposal;
-    toJSON(message: MsgCancelProposal): unknown;
-    fromPartial(object: Partial<MsgCancelProposal>): MsgCancelProposal;
-};
-export declare const MsgCancelProposalResponse: {
-    encode(message: MsgCancelProposalResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCancelProposalResponse;
-    fromJSON(object: any): MsgCancelProposalResponse;
-    toJSON(message: MsgCancelProposalResponse): unknown;
-    fromPartial(object: Partial<MsgCancelProposalResponse>): MsgCancelProposalResponse;
 };

@@ -1,4 +1,4 @@
-import { Deposit, DepositSDKType, Vote, VoteSDKType, Proposal, ProposalSDKType, DepositParams, DepositParamsSDKType, VotingParams, VotingParamsSDKType, TallyParams, TallyParamsSDKType, Params, ParamsSDKType } from "./gov";
+import { Deposit, DepositSDKType, Vote, VoteSDKType, Proposal, ProposalSDKType, DepositParams, DepositParamsSDKType, VotingParams, VotingParamsSDKType, TallyParams, TallyParamsSDKType } from "./gov";
 import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
 /** GenesisState defines the gov module's genesis state. */
@@ -11,39 +11,12 @@ export interface GenesisState {
     votes: Vote[];
     /** proposals defines all the proposals present at genesis. */
     proposals: Proposal[];
-    /**
-     * Deprecated: Prefer to use `params` instead.
-     * deposit_params defines all the paramaters of related to deposit.
-     */
-    /** @deprecated */
+    /** params defines all the paramaters of related to deposit. */
     depositParams?: DepositParams;
-    /**
-     * Deprecated: Prefer to use `params` instead.
-     * voting_params defines all the paramaters of related to voting.
-     */
-    /** @deprecated */
+    /** params defines all the paramaters of related to voting. */
     votingParams?: VotingParams;
-    /**
-     * Deprecated: Prefer to use `params` instead.
-     * tally_params defines all the paramaters of related to tally.
-     */
-    /** @deprecated */
+    /** params defines all the paramaters of related to tally. */
     tallyParams?: TallyParams;
-    /**
-     * params defines all the paramaters of x/gov module.
-     *
-     * Since: cosmos-sdk 0.47
-     */
-    params?: Params;
-    /**
-     * The constitution allows builders to lay a foundation and define purpose.
-     * This is an immutable string set in genesis.
-     * There are no amendments, to go outside of scope, just fork.
-     * constitution is an immutable string in genesis for a chain builder to lay out their vision, ideas and ideals.
-     *
-     * Since: cosmos-sdk 0.48
-     */
-    constitution: string;
 }
 /** GenesisState defines the gov module's genesis state. */
 export interface GenesisStateSDKType {
@@ -55,39 +28,12 @@ export interface GenesisStateSDKType {
     votes: VoteSDKType[];
     /** proposals defines all the proposals present at genesis. */
     proposals: ProposalSDKType[];
-    /**
-     * Deprecated: Prefer to use `params` instead.
-     * deposit_params defines all the paramaters of related to deposit.
-     */
-    /** @deprecated */
+    /** params defines all the paramaters of related to deposit. */
     deposit_params?: DepositParamsSDKType;
-    /**
-     * Deprecated: Prefer to use `params` instead.
-     * voting_params defines all the paramaters of related to voting.
-     */
-    /** @deprecated */
+    /** params defines all the paramaters of related to voting. */
     voting_params?: VotingParamsSDKType;
-    /**
-     * Deprecated: Prefer to use `params` instead.
-     * tally_params defines all the paramaters of related to tally.
-     */
-    /** @deprecated */
+    /** params defines all the paramaters of related to tally. */
     tally_params?: TallyParamsSDKType;
-    /**
-     * params defines all the paramaters of x/gov module.
-     *
-     * Since: cosmos-sdk 0.47
-     */
-    params?: ParamsSDKType;
-    /**
-     * The constitution allows builders to lay a foundation and define purpose.
-     * This is an immutable string set in genesis.
-     * There are no amendments, to go outside of scope, just fork.
-     * constitution is an immutable string in genesis for a chain builder to lay out their vision, ideas and ideals.
-     *
-     * Since: cosmos-sdk 0.48
-     */
-    constitution: string;
 }
 export declare const GenesisState: {
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;

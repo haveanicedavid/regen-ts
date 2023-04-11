@@ -1,6 +1,6 @@
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
-import { MsgSubmitProposal, MsgExecLegacyContent, MsgVote, MsgVoteWeighted, MsgDeposit, MsgUpdateParams, MsgCancelProposal } from "./tx";
-export const registry: ReadonlyArray<[string, GeneratedType]> = [["/cosmos.gov.v1.MsgSubmitProposal", MsgSubmitProposal], ["/cosmos.gov.v1.MsgExecLegacyContent", MsgExecLegacyContent], ["/cosmos.gov.v1.MsgVote", MsgVote], ["/cosmos.gov.v1.MsgVoteWeighted", MsgVoteWeighted], ["/cosmos.gov.v1.MsgDeposit", MsgDeposit], ["/cosmos.gov.v1.MsgUpdateParams", MsgUpdateParams], ["/cosmos.gov.v1.MsgCancelProposal", MsgCancelProposal]];
+import { MsgSubmitProposal, MsgExecLegacyContent, MsgVote, MsgVoteWeighted, MsgDeposit } from "./tx";
+export const registry: ReadonlyArray<[string, GeneratedType]> = [["/cosmos.gov.v1.MsgSubmitProposal", MsgSubmitProposal], ["/cosmos.gov.v1.MsgExecLegacyContent", MsgExecLegacyContent], ["/cosmos.gov.v1.MsgVote", MsgVote], ["/cosmos.gov.v1.MsgVoteWeighted", MsgVoteWeighted], ["/cosmos.gov.v1.MsgDeposit", MsgDeposit]];
 export const load = (protoRegistry: Registry) => {
   registry.forEach(([typeUrl, mod]) => {
     protoRegistry.register(typeUrl, mod);
@@ -41,20 +41,6 @@ export const MessageComposer = {
         typeUrl: "/cosmos.gov.v1.MsgDeposit",
         value: MsgDeposit.encode(value).finish()
       };
-    },
-
-    updateParams(value: MsgUpdateParams) {
-      return {
-        typeUrl: "/cosmos.gov.v1.MsgUpdateParams",
-        value: MsgUpdateParams.encode(value).finish()
-      };
-    },
-
-    cancelProposal(value: MsgCancelProposal) {
-      return {
-        typeUrl: "/cosmos.gov.v1.MsgCancelProposal",
-        value: MsgCancelProposal.encode(value).finish()
-      };
     }
 
   },
@@ -90,20 +76,6 @@ export const MessageComposer = {
     deposit(value: MsgDeposit) {
       return {
         typeUrl: "/cosmos.gov.v1.MsgDeposit",
-        value
-      };
-    },
-
-    updateParams(value: MsgUpdateParams) {
-      return {
-        typeUrl: "/cosmos.gov.v1.MsgUpdateParams",
-        value
-      };
-    },
-
-    cancelProposal(value: MsgCancelProposal) {
-      return {
-        typeUrl: "/cosmos.gov.v1.MsgCancelProposal",
         value
       };
     }
@@ -143,20 +115,6 @@ export const MessageComposer = {
         typeUrl: "/cosmos.gov.v1.MsgDeposit",
         value: MsgDeposit.toJSON(value)
       };
-    },
-
-    updateParams(value: MsgUpdateParams) {
-      return {
-        typeUrl: "/cosmos.gov.v1.MsgUpdateParams",
-        value: MsgUpdateParams.toJSON(value)
-      };
-    },
-
-    cancelProposal(value: MsgCancelProposal) {
-      return {
-        typeUrl: "/cosmos.gov.v1.MsgCancelProposal",
-        value: MsgCancelProposal.toJSON(value)
-      };
     }
 
   },
@@ -194,20 +152,6 @@ export const MessageComposer = {
         typeUrl: "/cosmos.gov.v1.MsgDeposit",
         value: MsgDeposit.fromJSON(value)
       };
-    },
-
-    updateParams(value: any) {
-      return {
-        typeUrl: "/cosmos.gov.v1.MsgUpdateParams",
-        value: MsgUpdateParams.fromJSON(value)
-      };
-    },
-
-    cancelProposal(value: any) {
-      return {
-        typeUrl: "/cosmos.gov.v1.MsgCancelProposal",
-        value: MsgCancelProposal.fromJSON(value)
-      };
     }
 
   },
@@ -244,20 +188,6 @@ export const MessageComposer = {
       return {
         typeUrl: "/cosmos.gov.v1.MsgDeposit",
         value: MsgDeposit.fromPartial(value)
-      };
-    },
-
-    updateParams(value: MsgUpdateParams) {
-      return {
-        typeUrl: "/cosmos.gov.v1.MsgUpdateParams",
-        value: MsgUpdateParams.fromPartial(value)
-      };
-    },
-
-    cancelProposal(value: MsgCancelProposal) {
-      return {
-        typeUrl: "/cosmos.gov.v1.MsgCancelProposal",
-        value: MsgCancelProposal.fromPartial(value)
       };
     }
 

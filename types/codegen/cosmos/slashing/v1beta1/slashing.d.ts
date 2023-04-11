@@ -8,25 +8,24 @@ import { Long } from "../../../helpers";
  */
 export interface ValidatorSigningInfo {
     address: string;
-    /** Height at which validator was first a candidate OR was un-jailed */
+    /** Height at which validator was first a candidate OR was unjailed */
     startHeight: Long;
     /**
-     * Index which is incremented every time a validator is bonded in a block and
-     * _may_ have signed a pre-commit or not. This in conjunction with the
-     * signed_blocks_window param determines the index in the missed block bitmap.
+     * Index which is incremented each time the validator was a bonded
+     * in a block and may have signed a precommit or not. This in conjunction with the
+     * `SignedBlocksWindow` param determines the index in the `MissedBlocksBitArray`.
      */
     indexOffset: Long;
     /** Timestamp until which the validator is jailed due to liveness downtime. */
     jailedUntil?: Timestamp;
     /**
-     * Whether or not a validator has been tombstoned (killed out of validator
-     * set). It is set once the validator commits an equivocation or for any other
-     * configured misbehavior.
+     * Whether or not a validator has been tombstoned (killed out of validator set). It is set
+     * once the validator commits an equivocation or for any other configured misbehiavor.
      */
     tombstoned: boolean;
     /**
-     * A counter of missed (unsigned) blocks. It is used to avoid unnecessary
-     * reads in the missed block bitmap.
+     * A counter kept to avoid unnecessary array reads.
+     * Note that `Sum(MissedBlocksBitArray)` always equals `MissedBlocksCounter`.
      */
     missedBlocksCounter: Long;
 }
@@ -36,25 +35,24 @@ export interface ValidatorSigningInfo {
  */
 export interface ValidatorSigningInfoSDKType {
     address: string;
-    /** Height at which validator was first a candidate OR was un-jailed */
+    /** Height at which validator was first a candidate OR was unjailed */
     start_height: Long;
     /**
-     * Index which is incremented every time a validator is bonded in a block and
-     * _may_ have signed a pre-commit or not. This in conjunction with the
-     * signed_blocks_window param determines the index in the missed block bitmap.
+     * Index which is incremented each time the validator was a bonded
+     * in a block and may have signed a precommit or not. This in conjunction with the
+     * `SignedBlocksWindow` param determines the index in the `MissedBlocksBitArray`.
      */
     index_offset: Long;
     /** Timestamp until which the validator is jailed due to liveness downtime. */
     jailed_until?: TimestampSDKType;
     /**
-     * Whether or not a validator has been tombstoned (killed out of validator
-     * set). It is set once the validator commits an equivocation or for any other
-     * configured misbehavior.
+     * Whether or not a validator has been tombstoned (killed out of validator set). It is set
+     * once the validator commits an equivocation or for any other configured misbehiavor.
      */
     tombstoned: boolean;
     /**
-     * A counter of missed (unsigned) blocks. It is used to avoid unnecessary
-     * reads in the missed block bitmap.
+     * A counter kept to avoid unnecessary array reads.
+     * Note that `Sum(MissedBlocksBitArray)` always equals `MissedBlocksCounter`.
      */
     missed_blocks_counter: Long;
 }

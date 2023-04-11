@@ -108,8 +108,6 @@ export interface AminoMsgSubmitProposal extends AminoMsg {
             value: Uint8Array;
         }[];
         exec: number;
-        title: string;
-        summary: string;
     };
 }
 export interface AminoMsgWithdrawProposal extends AminoMsg {
@@ -191,8 +189,8 @@ export declare const AminoConverter: {
     };
     "/cosmos.group.v1.MsgSubmitProposal": {
         aminoType: string;
-        toAmino: ({ groupPolicyAddress, proposers, metadata, messages, exec, title, summary }: MsgSubmitProposal) => AminoMsgSubmitProposal["value"];
-        fromAmino: ({ group_policy_address, proposers, metadata, messages, exec, title, summary }: AminoMsgSubmitProposal["value"]) => MsgSubmitProposal;
+        toAmino: ({ groupPolicyAddress, proposers, metadata, messages, exec }: MsgSubmitProposal) => AminoMsgSubmitProposal["value"];
+        fromAmino: ({ group_policy_address, proposers, metadata, messages, exec }: AminoMsgSubmitProposal["value"]) => MsgSubmitProposal;
     };
     "/cosmos.group.v1.MsgWithdrawProposal": {
         aminoType: string;

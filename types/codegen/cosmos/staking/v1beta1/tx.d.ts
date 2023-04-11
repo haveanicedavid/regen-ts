@@ -1,4 +1,4 @@
-import { Description, DescriptionSDKType, CommissionRates, CommissionRatesSDKType, Params, ParamsSDKType } from "./staking";
+import { Description, DescriptionSDKType, CommissionRates, CommissionRatesSDKType } from "./staking";
 import { Any, AnySDKType } from "../../../google/protobuf/any";
 import { Coin, CoinSDKType } from "../../base/v1beta1/coin";
 import { Timestamp, TimestampSDKType } from "../../../google/protobuf/timestamp";
@@ -9,12 +9,6 @@ export interface MsgCreateValidator {
     description?: Description;
     commission?: CommissionRates;
     minSelfDelegation: string;
-    /**
-     * Deprecated: Use of Delegator Address in MsgCreateValidator is deprecated.
-     * The validator address bytes and delegator address bytes refer to the same account while creating validator (defer
-     * only in bech32 notation).
-     */
-    /** @deprecated */
     delegatorAddress: string;
     validatorAddress: string;
     pubkey?: Any;
@@ -25,12 +19,6 @@ export interface MsgCreateValidatorSDKType {
     description?: DescriptionSDKType;
     commission?: CommissionRatesSDKType;
     min_self_delegation: string;
-    /**
-     * Deprecated: Use of Delegator Address in MsgCreateValidator is deprecated.
-     * The validator address bytes and delegator address bytes refer to the same account while creating validator (defer
-     * only in bech32 notation).
-     */
-    /** @deprecated */
     delegator_address: string;
     validator_address: string;
     pubkey?: AnySDKType;
@@ -147,22 +135,10 @@ export interface MsgUndelegateSDKType {
 /** MsgUndelegateResponse defines the Msg/Undelegate response type. */
 export interface MsgUndelegateResponse {
     completionTime?: Timestamp;
-    /**
-     * amount returns the amount of undelegated coins
-     *
-     * Since: cosmos-sdk 0.48
-     */
-    amount?: Coin;
 }
 /** MsgUndelegateResponse defines the Msg/Undelegate response type. */
 export interface MsgUndelegateResponseSDKType {
     completion_time?: TimestampSDKType;
-    /**
-     * amount returns the amount of undelegated coins
-     *
-     * Since: cosmos-sdk 0.48
-     */
-    amount?: CoinSDKType;
 }
 /**
  * MsgCancelUnbondingDelegation defines the SDK message for performing a cancel unbonding delegation for delegator
@@ -203,52 +179,6 @@ export interface MsgCancelUnbondingDelegationResponse {
  * Since: cosmos-sdk 0.46
  */
 export interface MsgCancelUnbondingDelegationResponseSDKType {
-}
-/**
- * MsgUpdateParams is the Msg/UpdateParams request type.
- *
- * Since: cosmos-sdk 0.47
- */
-export interface MsgUpdateParams {
-    /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
-    authority: string;
-    /**
-     * params defines the x/staking parameters to update.
-     *
-     * NOTE: All parameters must be supplied.
-     */
-    params?: Params;
-}
-/**
- * MsgUpdateParams is the Msg/UpdateParams request type.
- *
- * Since: cosmos-sdk 0.47
- */
-export interface MsgUpdateParamsSDKType {
-    /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
-    authority: string;
-    /**
-     * params defines the x/staking parameters to update.
-     *
-     * NOTE: All parameters must be supplied.
-     */
-    params?: ParamsSDKType;
-}
-/**
- * MsgUpdateParamsResponse defines the response structure for executing a
- * MsgUpdateParams message.
- *
- * Since: cosmos-sdk 0.47
- */
-export interface MsgUpdateParamsResponse {
-}
-/**
- * MsgUpdateParamsResponse defines the response structure for executing a
- * MsgUpdateParams message.
- *
- * Since: cosmos-sdk 0.47
- */
-export interface MsgUpdateParamsResponseSDKType {
 }
 export declare const MsgCreateValidator: {
     encode(message: MsgCreateValidator, writer?: _m0.Writer): _m0.Writer;
@@ -333,18 +263,4 @@ export declare const MsgCancelUnbondingDelegationResponse: {
     fromJSON(_: any): MsgCancelUnbondingDelegationResponse;
     toJSON(_: MsgCancelUnbondingDelegationResponse): unknown;
     fromPartial(_: Partial<MsgCancelUnbondingDelegationResponse>): MsgCancelUnbondingDelegationResponse;
-};
-export declare const MsgUpdateParams: {
-    encode(message: MsgUpdateParams, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateParams;
-    fromJSON(object: any): MsgUpdateParams;
-    toJSON(message: MsgUpdateParams): unknown;
-    fromPartial(object: Partial<MsgUpdateParams>): MsgUpdateParams;
-};
-export declare const MsgUpdateParamsResponse: {
-    encode(_: MsgUpdateParamsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateParamsResponse;
-    fromJSON(_: any): MsgUpdateParamsResponse;
-    toJSON(_: MsgUpdateParamsResponse): unknown;
-    fromPartial(_: Partial<MsgUpdateParamsResponse>): MsgUpdateParamsResponse;
 };

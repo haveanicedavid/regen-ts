@@ -32,12 +32,6 @@ export interface Module {
      * to be used in keeper construction.
      */
     overrideStoreKeys: StoreKeyConfig[];
-    /**
-     * order_migrations defines the order in which module migrations are performed.
-     * If this is left empty, it uses the default migration order.
-     * https://pkg.go.dev/github.com/cosmos/cosmos-sdk@v0.47.0-alpha2/types/module#DefaultMigrationsOrder
-     */
-    orderMigrations: string[];
 }
 /** Module is the config object for the runtime module. */
 export interface ModuleSDKType {
@@ -72,12 +66,6 @@ export interface ModuleSDKType {
      * to be used in keeper construction.
      */
     override_store_keys: StoreKeyConfigSDKType[];
-    /**
-     * order_migrations defines the order in which module migrations are performed.
-     * If this is left empty, it uses the default migration order.
-     * https://pkg.go.dev/github.com/cosmos/cosmos-sdk@v0.47.0-alpha2/types/module#DefaultMigrationsOrder
-     */
-    order_migrations: string[];
 }
 /**
  * StoreKeyConfig may be supplied to override the default module store key, which

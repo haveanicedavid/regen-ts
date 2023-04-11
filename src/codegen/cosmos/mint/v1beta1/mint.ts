@@ -18,7 +18,7 @@ export interface MinterSDKType {
 
   annual_provisions: string;
 }
-/** Params defines the parameters for the x/mint module. */
+/** Params holds parameters for the mint module. */
 
 export interface Params {
   /** type of coin to mint */
@@ -39,7 +39,7 @@ export interface Params {
 
   blocksPerYear: Long;
 }
-/** Params defines the parameters for the x/mint module. */
+/** Params holds parameters for the mint module. */
 
 export interface ParamsSDKType {
   /** type of coin to mint */

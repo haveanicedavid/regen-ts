@@ -265,12 +265,6 @@ export interface MsgUpdateGroupPolicyAdminSDKType {
 
   new_admin: string;
 }
-/** MsgUpdateGroupPolicyAdminResponse is the Msg/UpdateGroupPolicyAdmin response type. */
-
-export interface MsgUpdateGroupPolicyAdminResponse {}
-/** MsgUpdateGroupPolicyAdminResponse is the Msg/UpdateGroupPolicyAdmin response type. */
-
-export interface MsgUpdateGroupPolicyAdminResponseSDKType {}
 /** MsgCreateGroupWithPolicy is the Msg/CreateGroupWithPolicy request type. */
 
 export interface MsgCreateGroupWithPolicy {
@@ -337,6 +331,12 @@ export interface MsgCreateGroupWithPolicyResponseSDKType {
 
   group_policy_address: string;
 }
+/** MsgUpdateGroupPolicyAdminResponse is the Msg/UpdateGroupPolicyAdmin response type. */
+
+export interface MsgUpdateGroupPolicyAdminResponse {}
+/** MsgUpdateGroupPolicyAdminResponse is the Msg/UpdateGroupPolicyAdmin response type. */
+
+export interface MsgUpdateGroupPolicyAdminResponseSDKType {}
 /** MsgUpdateGroupPolicyDecisionPolicy is the Msg/UpdateGroupPolicyDecisionPolicy request type. */
 
 export interface MsgUpdateGroupPolicyDecisionPolicy {
@@ -375,7 +375,7 @@ export interface MsgUpdateGroupPolicyMetadata {
   /** group_policy_address is the account address of group policy. */
 
   groupPolicyAddress: string;
-  /** metadata is the group policy metadata to be updated. */
+  /** metadata is the updated group policy metadata. */
 
   metadata: string;
 }
@@ -387,7 +387,7 @@ export interface MsgUpdateGroupPolicyMetadataSDKType {
   /** group_policy_address is the account address of group policy. */
 
   group_policy_address: string;
-  /** metadata is the group policy metadata to be updated. */
+  /** metadata is the updated group policy metadata. */
 
   metadata: string;
 }
@@ -408,7 +408,7 @@ export interface MsgSubmitProposal {
    */
 
   proposers: string[];
-  /** metadata is any arbitrary metadata attached to the proposal. */
+  /** metadata is any arbitrary metadata to attached to the proposal. */
 
   metadata: string;
   /** messages is a list of `sdk.Msg`s that will be executed if the proposal passes. */
@@ -421,20 +421,6 @@ export interface MsgSubmitProposal {
    */
 
   exec: Exec;
-  /**
-   * title is the title of the proposal.
-   * 
-   * Since: cosmos-sdk 0.47
-   */
-
-  title: string;
-  /**
-   * summary is the summary of the proposal.
-   * 
-   * Since: cosmos-sdk 0.47
-   */
-
-  summary: string;
 }
 /** MsgSubmitProposal is the Msg/SubmitProposal request type. */
 
@@ -447,7 +433,7 @@ export interface MsgSubmitProposalSDKType {
    */
 
   proposers: string[];
-  /** metadata is any arbitrary metadata attached to the proposal. */
+  /** metadata is any arbitrary metadata to attached to the proposal. */
 
   metadata: string;
   /** messages is a list of `sdk.Msg`s that will be executed if the proposal passes. */
@@ -460,20 +446,6 @@ export interface MsgSubmitProposalSDKType {
    */
 
   exec: ExecSDKType;
-  /**
-   * title is the title of the proposal.
-   * 
-   * Since: cosmos-sdk 0.47
-   */
-
-  title: string;
-  /**
-   * summary is the summary of the proposal.
-   * 
-   * Since: cosmos-sdk 0.47
-   */
-
-  summary: string;
 }
 /** MsgSubmitProposalResponse is the Msg/SubmitProposal response type. */
 
@@ -522,7 +494,7 @@ export interface MsgVote {
   /** option is the voter's choice on the proposal. */
 
   option: VoteOption;
-  /** metadata is any arbitrary metadata attached to the vote. */
+  /** metadata is any arbitrary metadata to attached to the vote. */
 
   metadata: string;
   /**
@@ -543,7 +515,7 @@ export interface MsgVoteSDKType {
   /** option is the voter's choice on the proposal. */
 
   option: VoteOptionSDKType;
-  /** metadata is any arbitrary metadata attached to the vote. */
+  /** metadata is any arbitrary metadata to attached to the vote. */
 
   metadata: string;
   /**
@@ -1367,49 +1339,6 @@ export const MsgUpdateGroupPolicyAdmin = {
 
 };
 
-function createBaseMsgUpdateGroupPolicyAdminResponse(): MsgUpdateGroupPolicyAdminResponse {
-  return {};
-}
-
-export const MsgUpdateGroupPolicyAdminResponse = {
-  encode(_: MsgUpdateGroupPolicyAdminResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateGroupPolicyAdminResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseMsgUpdateGroupPolicyAdminResponse();
-
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-
-      switch (tag >>> 3) {
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-
-    return message;
-  },
-
-  fromJSON(_: any): MsgUpdateGroupPolicyAdminResponse {
-    return {};
-  },
-
-  toJSON(_: MsgUpdateGroupPolicyAdminResponse): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
-  fromPartial(_: Partial<MsgUpdateGroupPolicyAdminResponse>): MsgUpdateGroupPolicyAdminResponse {
-    const message = createBaseMsgUpdateGroupPolicyAdminResponse();
-    return message;
-  }
-
-};
-
 function createBaseMsgCreateGroupWithPolicy(): MsgCreateGroupWithPolicy {
   return {
     admin: "",
@@ -1597,6 +1526,49 @@ export const MsgCreateGroupWithPolicyResponse = {
     const message = createBaseMsgCreateGroupWithPolicyResponse();
     message.groupId = object.groupId !== undefined && object.groupId !== null ? Long.fromValue(object.groupId) : Long.UZERO;
     message.groupPolicyAddress = object.groupPolicyAddress ?? "";
+    return message;
+  }
+
+};
+
+function createBaseMsgUpdateGroupPolicyAdminResponse(): MsgUpdateGroupPolicyAdminResponse {
+  return {};
+}
+
+export const MsgUpdateGroupPolicyAdminResponse = {
+  encode(_: MsgUpdateGroupPolicyAdminResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateGroupPolicyAdminResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgUpdateGroupPolicyAdminResponse();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromJSON(_: any): MsgUpdateGroupPolicyAdminResponse {
+    return {};
+  },
+
+  toJSON(_: MsgUpdateGroupPolicyAdminResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(_: Partial<MsgUpdateGroupPolicyAdminResponse>): MsgUpdateGroupPolicyAdminResponse {
+    const message = createBaseMsgUpdateGroupPolicyAdminResponse();
     return message;
   }
 
@@ -1856,9 +1828,7 @@ function createBaseMsgSubmitProposal(): MsgSubmitProposal {
     proposers: [],
     metadata: "",
     messages: [],
-    exec: 0,
-    title: "",
-    summary: ""
+    exec: 0
   };
 }
 
@@ -1882,14 +1852,6 @@ export const MsgSubmitProposal = {
 
     if (message.exec !== 0) {
       writer.uint32(40).int32(message.exec);
-    }
-
-    if (message.title !== "") {
-      writer.uint32(50).string(message.title);
-    }
-
-    if (message.summary !== "") {
-      writer.uint32(58).string(message.summary);
     }
 
     return writer;
@@ -1924,14 +1886,6 @@ export const MsgSubmitProposal = {
           message.exec = (reader.int32() as any);
           break;
 
-        case 6:
-          message.title = reader.string();
-          break;
-
-        case 7:
-          message.summary = reader.string();
-          break;
-
         default:
           reader.skipType(tag & 7);
           break;
@@ -1947,9 +1901,7 @@ export const MsgSubmitProposal = {
       proposers: Array.isArray(object?.proposers) ? object.proposers.map((e: any) => String(e)) : [],
       metadata: isSet(object.metadata) ? String(object.metadata) : "",
       messages: Array.isArray(object?.messages) ? object.messages.map((e: any) => Any.fromJSON(e)) : [],
-      exec: isSet(object.exec) ? execFromJSON(object.exec) : 0,
-      title: isSet(object.title) ? String(object.title) : "",
-      summary: isSet(object.summary) ? String(object.summary) : ""
+      exec: isSet(object.exec) ? execFromJSON(object.exec) : 0
     };
   },
 
@@ -1972,8 +1924,6 @@ export const MsgSubmitProposal = {
     }
 
     message.exec !== undefined && (obj.exec = execToJSON(message.exec));
-    message.title !== undefined && (obj.title = message.title);
-    message.summary !== undefined && (obj.summary = message.summary);
     return obj;
   },
 
@@ -1984,8 +1934,6 @@ export const MsgSubmitProposal = {
     message.metadata = object.metadata ?? "";
     message.messages = object.messages?.map(e => Any.fromPartial(e)) || [];
     message.exec = object.exec ?? 0;
-    message.title = object.title ?? "";
-    message.summary = object.summary ?? "";
     return message;
   }
 

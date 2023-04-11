@@ -3,27 +3,21 @@ export declare const createLCDClient: ({ restEndpoint }: {
 }) => Promise<{
     cosmos: {
         auth: {
-            v1beta1: import("./cosmos/auth/v1beta1/query.lcd").LCDQueryClient;
+            v1beta1: import("./auth/v1beta1/query.lcd").LCDQueryClient;
         };
         authz: {
-            v1beta1: import("./cosmos/authz/v1beta1/query.lcd").LCDQueryClient;
+            v1beta1: import("./authz/v1beta1/query.lcd").LCDQueryClient;
         };
         bank: {
-            v1beta1: import("./cosmos/bank/v1beta1/query.lcd").LCDQueryClient;
+            v1beta1: import("./bank/v1beta1/query.lcd").LCDQueryClient;
         };
         base: {
             node: {
-                v1beta1: import("./cosmos/base/node/v1beta1/query.lcd").LCDQueryClient;
+                v1beta1: import("./base/node/v1beta1/query.lcd").LCDQueryClient;
             };
             tendermint: {
-                v1beta1: import("./cosmos/base/tendermint/v1beta1/query.lcd").LCDQueryClient;
+                v1beta1: import("./base/tendermint/v1beta1/query.lcd").LCDQueryClient;
             };
-        };
-        circuit: {
-            v1: import("./cosmos/circuit/v1/query.lcd").LCDQueryClient;
-        };
-        consensus: {
-            v1: import("./cosmos/consensus/v1/query.lcd").LCDQueryClient;
         };
         distribution: {
             v1beta1: import("./distribution/v1beta1/query.lcd").LCDQueryClient;

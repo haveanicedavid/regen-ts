@@ -275,37 +275,6 @@ export declare const cosmosAminoConverters: {
             creation_height: string;
         }) => import("./staking/v1beta1/tx").MsgCancelUnbondingDelegation;
     };
-    "/cosmos.staking.v1beta1.MsgUpdateParams": {
-        aminoType: string;
-        toAmino: ({ authority, params }: import("./staking/v1beta1/tx").MsgUpdateParams) => {
-            authority: string;
-            params: {
-                unbonding_time: {
-                    seconds: string;
-                    nanos: number;
-                };
-                max_validators: number;
-                max_entries: number;
-                historical_entries: number;
-                bond_denom: string;
-                min_commission_rate: string;
-            };
-        };
-        fromAmino: ({ authority, params }: {
-            authority: string;
-            params: {
-                unbonding_time: {
-                    seconds: string;
-                    nanos: number;
-                };
-                max_validators: number;
-                max_entries: number;
-                historical_entries: number;
-                bond_denom: string;
-                min_commission_rate: string;
-            };
-        }) => import("./staking/v1beta1/tx").MsgUpdateParams;
-    };
     "/cosmos.slashing.v1beta1.MsgUnjail": {
         aminoType: string;
         toAmino: ({ validatorAddr }: import("./slashing/v1beta1/tx").MsgUnjail) => {
@@ -314,35 +283,6 @@ export declare const cosmosAminoConverters: {
         fromAmino: ({ validator_addr }: {
             validator_addr: string;
         }) => import("./slashing/v1beta1/tx").MsgUnjail;
-    };
-    "/cosmos.slashing.v1beta1.MsgUpdateParams": {
-        aminoType: string;
-        toAmino: ({ authority, params }: import("./slashing/v1beta1/tx").MsgUpdateParams) => {
-            authority: string;
-            params: {
-                signed_blocks_window: string;
-                min_signed_per_window: Uint8Array;
-                downtime_jail_duration: {
-                    seconds: string;
-                    nanos: number;
-                };
-                slash_fraction_double_sign: Uint8Array;
-                slash_fraction_downtime: Uint8Array;
-            };
-        };
-        fromAmino: ({ authority, params }: {
-            authority: string;
-            params: {
-                signed_blocks_window: string;
-                min_signed_per_window: Uint8Array;
-                downtime_jail_duration: {
-                    seconds: string;
-                    nanos: number;
-                };
-                slash_fraction_double_sign: Uint8Array;
-                slash_fraction_downtime: Uint8Array;
-            };
-        }) => import("./slashing/v1beta1/tx").MsgUpdateParams;
     };
     "/cosmos.nft.v1beta1.MsgSend": {
         aminoType: string;
@@ -358,31 +298,6 @@ export declare const cosmosAminoConverters: {
             sender: string;
             receiver: string;
         }) => import("./nft/v1beta1/tx").MsgSend;
-    };
-    "/cosmos.mint.v1beta1.MsgUpdateParams": {
-        aminoType: string;
-        toAmino: ({ authority, params }: import("./mint/v1beta1/tx").MsgUpdateParams) => {
-            authority: string;
-            params: {
-                mint_denom: string;
-                inflation_rate_change: string;
-                inflation_max: string;
-                inflation_min: string;
-                goal_bonded: string;
-                blocks_per_year: string;
-            };
-        };
-        fromAmino: ({ authority, params }: {
-            authority: string;
-            params: {
-                mint_denom: string;
-                inflation_rate_change: string;
-                inflation_max: string;
-                inflation_min: string;
-                goal_bonded: string;
-                blocks_per_year: string;
-            };
-        }) => import("./mint/v1beta1/tx").MsgUpdateParams;
     };
     "/cosmos.group.v1.MsgCreateGroup": {
         aminoType: string;
@@ -553,7 +468,7 @@ export declare const cosmosAminoConverters: {
     };
     "/cosmos.group.v1.MsgSubmitProposal": {
         aminoType: string;
-        toAmino: ({ groupPolicyAddress, proposers, metadata, messages, exec, title, summary }: import("./group/v1/tx").MsgSubmitProposal) => {
+        toAmino: ({ groupPolicyAddress, proposers, metadata, messages, exec }: import("./group/v1/tx").MsgSubmitProposal) => {
             group_policy_address: string;
             proposers: string[];
             metadata: string;
@@ -562,10 +477,8 @@ export declare const cosmosAminoConverters: {
                 value: Uint8Array;
             }[];
             exec: number;
-            title: string;
-            summary: string;
         };
-        fromAmino: ({ group_policy_address, proposers, metadata, messages, exec, title, summary }: {
+        fromAmino: ({ group_policy_address, proposers, metadata, messages, exec }: {
             group_policy_address: string;
             proposers: string[];
             metadata: string;
@@ -574,8 +487,6 @@ export declare const cosmosAminoConverters: {
                 value: Uint8Array;
             }[];
             exec: number;
-            title: string;
-            summary: string;
         }) => import("./group/v1/tx").MsgSubmitProposal;
     };
     "/cosmos.group.v1.MsgWithdrawProposal": {
@@ -706,7 +617,7 @@ export declare const cosmosAminoConverters: {
     };
     "/cosmos.gov.v1.MsgSubmitProposal": {
         aminoType: string;
-        toAmino: ({ messages, initialDeposit, proposer, metadata, title, summary, expedited }: import("./gov/v1/tx").MsgSubmitProposal) => {
+        toAmino: ({ messages, initialDeposit, proposer, metadata }: import("./gov/v1/tx").MsgSubmitProposal) => {
             messages: {
                 type_url: string;
                 value: Uint8Array;
@@ -717,11 +628,8 @@ export declare const cosmosAminoConverters: {
             }[];
             proposer: string;
             metadata: string;
-            title: string;
-            summary: string;
-            expedited: boolean;
         };
-        fromAmino: ({ messages, initial_deposit, proposer, metadata, title, summary, expedited }: {
+        fromAmino: ({ messages, initial_deposit, proposer, metadata }: {
             messages: {
                 type_url: string;
                 value: Uint8Array;
@@ -732,9 +640,6 @@ export declare const cosmosAminoConverters: {
             }[];
             proposer: string;
             metadata: string;
-            title: string;
-            summary: string;
-            expedited: boolean;
         }) => import("./gov/v1/tx").MsgSubmitProposal;
     };
     "/cosmos.gov.v1.MsgExecLegacyContent": {
@@ -808,90 +713,6 @@ export declare const cosmosAminoConverters: {
                 amount: string;
             }[];
         }) => import("./gov/v1/tx").MsgDeposit;
-    };
-    "/cosmos.gov.v1.MsgUpdateParams": {
-        aminoType: string;
-        toAmino: ({ authority, params }: import("./gov/v1/tx").MsgUpdateParams) => {
-            authority: string;
-            params: {
-                min_deposit: {
-                    denom: string;
-                    amount: string;
-                }[];
-                max_deposit_period: {
-                    seconds: string;
-                    nanos: number;
-                };
-                voting_period: {
-                    seconds: string;
-                    nanos: number;
-                };
-                quorum: string;
-                threshold: string;
-                veto_threshold: string;
-                min_initial_deposit_ratio: string;
-                proposal_cancel_ratio: string;
-                proposal_cancel_dest: string;
-                expedited_voting_period: {
-                    seconds: string;
-                    nanos: number;
-                };
-                expedited_threshold: string;
-                expedited_min_deposit: {
-                    denom: string;
-                    amount: string;
-                }[];
-                burn_vote_quorum: boolean;
-                burn_proposal_deposit_prevote: boolean;
-                burn_vote_veto: boolean;
-            };
-        };
-        fromAmino: ({ authority, params }: {
-            authority: string;
-            params: {
-                min_deposit: {
-                    denom: string;
-                    amount: string;
-                }[];
-                max_deposit_period: {
-                    seconds: string;
-                    nanos: number;
-                };
-                voting_period: {
-                    seconds: string;
-                    nanos: number;
-                };
-                quorum: string;
-                threshold: string;
-                veto_threshold: string;
-                min_initial_deposit_ratio: string;
-                proposal_cancel_ratio: string;
-                proposal_cancel_dest: string;
-                expedited_voting_period: {
-                    seconds: string;
-                    nanos: number;
-                };
-                expedited_threshold: string;
-                expedited_min_deposit: {
-                    denom: string;
-                    amount: string;
-                }[];
-                burn_vote_quorum: boolean;
-                burn_proposal_deposit_prevote: boolean;
-                burn_vote_veto: boolean;
-            };
-        }) => import("./gov/v1/tx").MsgUpdateParams;
-    };
-    "/cosmos.gov.v1.MsgCancelProposal": {
-        aminoType: string;
-        toAmino: ({ proposalId, proposer }: import("./gov/v1/tx").MsgCancelProposal) => {
-            proposal_id: string;
-            proposer: string;
-        };
-        fromAmino: ({ proposal_id, proposer }: {
-            proposal_id: string;
-            proposer: string;
-        }) => import("./gov/v1/tx").MsgCancelProposal;
     };
     "/cosmos.feegrant.v1beta1.MsgGrantAllowance": {
         aminoType: string;
@@ -988,65 +809,6 @@ export declare const cosmosAminoConverters: {
             depositor: string;
         }) => import("./distribution/v1beta1/tx").MsgFundCommunityPool;
     };
-    "/cosmos.distribution.v1beta1.MsgUpdateParams": {
-        aminoType: string;
-        toAmino: ({ authority, params }: import("./distribution/v1beta1/tx").MsgUpdateParams) => {
-            authority: string;
-            params: {
-                community_tax: string;
-                base_proposer_reward: string;
-                bonus_proposer_reward: string;
-                withdraw_addr_enabled: boolean;
-            };
-        };
-        fromAmino: ({ authority, params }: {
-            authority: string;
-            params: {
-                community_tax: string;
-                base_proposer_reward: string;
-                bonus_proposer_reward: string;
-                withdraw_addr_enabled: boolean;
-            };
-        }) => import("./distribution/v1beta1/tx").MsgUpdateParams;
-    };
-    "/cosmos.distribution.v1beta1.MsgCommunityPoolSpend": {
-        aminoType: string;
-        toAmino: ({ authority, recipient, amount }: import("./distribution/v1beta1/tx").MsgCommunityPoolSpend) => {
-            authority: string;
-            recipient: string;
-            amount: {
-                denom: string;
-                amount: string;
-            }[];
-        };
-        fromAmino: ({ authority, recipient, amount }: {
-            authority: string;
-            recipient: string;
-            amount: {
-                denom: string;
-                amount: string;
-            }[];
-        }) => import("./distribution/v1beta1/tx").MsgCommunityPoolSpend;
-    };
-    "/cosmos.distribution.v1beta1.MsgDepositValidatorRewardsPool": {
-        aminoType: string;
-        toAmino: ({ depositor, validatorAddress, amount }: import("./distribution/v1beta1/tx").MsgDepositValidatorRewardsPool) => {
-            depositor: string;
-            validator_address: string;
-            amount: {
-                denom: string;
-                amount: string;
-            }[];
-        };
-        fromAmino: ({ depositor, validator_address, amount }: {
-            depositor: string;
-            validator_address: string;
-            amount: {
-                denom: string;
-                amount: string;
-            }[];
-        }) => import("./distribution/v1beta1/tx").MsgDepositValidatorRewardsPool;
-    };
     "/cosmos.crisis.v1beta1.MsgVerifyInvariant": {
         aminoType: string;
         toAmino: ({ sender, invariantModuleName, invariantRoute }: import("./crisis/v1beta1/tx").MsgVerifyInvariant) => {
@@ -1060,106 +822,9 @@ export declare const cosmosAminoConverters: {
             invariant_route: string;
         }) => import("./crisis/v1beta1/tx").MsgVerifyInvariant;
     };
-    "/cosmos.crisis.v1beta1.MsgUpdateParams": {
-        aminoType: string;
-        toAmino: ({ authority, constantFee }: import("./crisis/v1beta1/tx").MsgUpdateParams) => {
-            authority: string;
-            constant_fee: {
-                denom: string;
-                amount: string;
-            };
-        };
-        fromAmino: ({ authority, constant_fee }: {
-            authority: string;
-            constant_fee: {
-                denom: string;
-                amount: string;
-            };
-        }) => import("./crisis/v1beta1/tx").MsgUpdateParams;
-    };
-    "/cosmos.consensus.v1.MsgUpdateParams": {
-        aminoType: string;
-        toAmino: ({ authority, block, evidence, validator }: import("./cosmos/consensus/v1/tx").MsgUpdateParams) => {
-            authority: string;
-            block: {
-                max_bytes: string;
-                max_gas: string;
-            };
-            evidence: {
-                max_age_num_blocks: string;
-                max_age_duration: {
-                    seconds: string;
-                    nanos: number;
-                };
-                max_bytes: string;
-            };
-            validator: {
-                pub_key_types: string[];
-            };
-        };
-        fromAmino: ({ authority, block, evidence, validator }: {
-            authority: string;
-            block: {
-                max_bytes: string;
-                max_gas: string;
-            };
-            evidence: {
-                max_age_num_blocks: string;
-                max_age_duration: {
-                    seconds: string;
-                    nanos: number;
-                };
-                max_bytes: string;
-            };
-            validator: {
-                pub_key_types: string[];
-            };
-        }) => import("./cosmos/consensus/v1/tx").MsgUpdateParams;
-    };
-    "/cosmos.circuit.v1.MsgAuthorizeCircuitBreaker": {
-        aminoType: string;
-        toAmino: ({ granter, grantee, permissions }: import("./cosmos/circuit/v1/tx").MsgAuthorizeCircuitBreaker) => {
-            granter: string;
-            grantee: string;
-            permissions: {
-                level: number;
-                limit_type_urls: string[];
-            };
-        };
-        fromAmino: ({ granter, grantee, permissions }: {
-            granter: string;
-            grantee: string;
-            permissions: {
-                level: number;
-                limit_type_urls: string[];
-            };
-        }) => import("./cosmos/circuit/v1/tx").MsgAuthorizeCircuitBreaker;
-    };
-    "/cosmos.circuit.v1.MsgTripCircuitBreaker": {
-        aminoType: string;
-        toAmino: ({ authority, msgTypeUrls }: import("./cosmos/circuit/v1/tx").MsgTripCircuitBreaker) => {
-            authority: string;
-            msg_type_urls: string[];
-        };
-        fromAmino: ({ authority, msg_type_urls }: {
-            authority: string;
-            msg_type_urls: string[];
-        }) => import("./cosmos/circuit/v1/tx").MsgTripCircuitBreaker;
-    };
-    "/cosmos.circuit.v1.MsgResetCircuitBreaker": {
-        aminoType: string;
-        toAmino: ({ authority, msgTypeUrls }: import("./cosmos/circuit/v1/tx").MsgResetCircuitBreaker) => {
-            authority: string;
-            msg_type_urls: string[];
-        };
-        fromAmino: ({ authority, msg_type_urls }: {
-            authority: string;
-            msg_type_urls: string[];
-        }) => import("./cosmos/circuit/v1/tx").MsgResetCircuitBreaker;
-    };
     "/cosmos.bank.v1beta1.MsgSend": {
         aminoType: string;
-        toAmino: ({ fromAddress, toAddress, amount }: import("./cosmos/bank/v1beta1/tx").MsgSend) => {
+        toAmino: ({ fromAddress, toAddress, amount }: import("./bank/v1beta1/tx").MsgSend) => {
             from_address: string;
             to_address: string;
             amount: {
@@ -1174,11 +839,11 @@ export declare const cosmosAminoConverters: {
                 denom: string;
                 amount: string;
             }[];
-        }) => import("./cosmos/bank/v1beta1/tx").MsgSend;
+        }) => import("./bank/v1beta1/tx").MsgSend;
     };
     "/cosmos.bank.v1beta1.MsgMultiSend": {
         aminoType: string;
-        toAmino: ({ inputs, outputs }: import("./cosmos/bank/v1beta1/tx").MsgMultiSend) => {
+        toAmino: ({ inputs, outputs }: import("./bank/v1beta1/tx").MsgMultiSend) => {
             inputs: {
                 address: string;
                 coins: {
@@ -1209,53 +874,11 @@ export declare const cosmosAminoConverters: {
                     amount: string;
                 }[];
             }[];
-        }) => import("./cosmos/bank/v1beta1/tx").MsgMultiSend;
-    };
-    "/cosmos.bank.v1beta1.MsgUpdateParams": {
-        aminoType: string;
-        toAmino: ({ authority, params }: import("./cosmos/bank/v1beta1/tx").MsgUpdateParams) => {
-            authority: string;
-            params: {
-                send_enabled: {
-                    denom: string;
-                    enabled: boolean;
-                }[];
-                default_send_enabled: boolean;
-            };
-        };
-        fromAmino: ({ authority, params }: {
-            authority: string;
-            params: {
-                send_enabled: {
-                    denom: string;
-                    enabled: boolean;
-                }[];
-                default_send_enabled: boolean;
-            };
-        }) => import("./cosmos/bank/v1beta1/tx").MsgUpdateParams;
-    };
-    "/cosmos.bank.v1beta1.MsgSetSendEnabled": {
-        aminoType: string;
-        toAmino: ({ authority, sendEnabled, useDefaultFor }: import("./cosmos/bank/v1beta1/tx").MsgSetSendEnabled) => {
-            authority: string;
-            send_enabled: {
-                denom: string;
-                enabled: boolean;
-            }[];
-            use_default_for: string[];
-        };
-        fromAmino: ({ authority, send_enabled, use_default_for }: {
-            authority: string;
-            send_enabled: {
-                denom: string;
-                enabled: boolean;
-            }[];
-            use_default_for: string[];
-        }) => import("./cosmos/bank/v1beta1/tx").MsgSetSendEnabled;
+        }) => import("./bank/v1beta1/tx").MsgMultiSend;
     };
     "/cosmos.authz.v1beta1.MsgGrant": {
         aminoType: string;
-        toAmino: ({ granter, grantee, grant }: import("./cosmos/authz/v1beta1/tx").MsgGrant) => {
+        toAmino: ({ granter, grantee, grant }: import("./authz/v1beta1/tx").MsgGrant) => {
             granter: string;
             grantee: string;
             grant: {
@@ -1282,11 +905,11 @@ export declare const cosmosAminoConverters: {
                     nanos: number;
                 };
             };
-        }) => import("./cosmos/authz/v1beta1/tx").MsgGrant;
+        }) => import("./authz/v1beta1/tx").MsgGrant;
     };
     "/cosmos.authz.v1beta1.MsgExec": {
         aminoType: string;
-        toAmino: ({ grantee, msgs }: import("./cosmos/authz/v1beta1/tx").MsgExec) => {
+        toAmino: ({ grantee, msgs }: import("./authz/v1beta1/tx").MsgExec) => {
             grantee: string;
             msgs: {
                 type_url: string;
@@ -1299,11 +922,11 @@ export declare const cosmosAminoConverters: {
                 type_url: string;
                 value: Uint8Array;
             }[];
-        }) => import("./cosmos/authz/v1beta1/tx").MsgExec;
+        }) => import("./authz/v1beta1/tx").MsgExec;
     };
     "/cosmos.authz.v1beta1.MsgRevoke": {
         aminoType: string;
-        toAmino: ({ granter, grantee, msgTypeUrl }: import("./cosmos/authz/v1beta1/tx").MsgRevoke) => {
+        toAmino: ({ granter, grantee, msgTypeUrl }: import("./authz/v1beta1/tx").MsgRevoke) => {
             granter: string;
             grantee: string;
             msg_type_url: string;
@@ -1312,30 +935,7 @@ export declare const cosmosAminoConverters: {
             granter: string;
             grantee: string;
             msg_type_url: string;
-        }) => import("./cosmos/authz/v1beta1/tx").MsgRevoke;
-    };
-    "/cosmos.auth.v1beta1.MsgUpdateParams": {
-        aminoType: string;
-        toAmino: ({ authority, params }: import("./cosmos/auth/v1beta1/tx").MsgUpdateParams) => {
-            authority: string;
-            params: {
-                max_memo_characters: string;
-                tx_sig_limit: string;
-                tx_size_cost_per_byte: string;
-                sig_verify_cost_ed25519: string;
-                sig_verify_cost_secp256k1: string;
-            };
-        };
-        fromAmino: ({ authority, params }: {
-            authority: string;
-            params: {
-                max_memo_characters: string;
-                tx_sig_limit: string;
-                tx_size_cost_per_byte: string;
-                sig_verify_cost_ed25519: string;
-                sig_verify_cost_secp256k1: string;
-            };
-        }) => import("./cosmos/auth/v1beta1/tx").MsgUpdateParams;
+        }) => import("./authz/v1beta1/tx").MsgRevoke;
     };
 };
 export declare const cosmosProtoRegistry: ReadonlyArray<[string, GeneratedType]>;

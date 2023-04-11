@@ -192,12 +192,6 @@ export interface MsgUpdateGroupPolicyAdminSDKType {
     /** new_admin is the new group policy admin. */
     new_admin: string;
 }
-/** MsgUpdateGroupPolicyAdminResponse is the Msg/UpdateGroupPolicyAdmin response type. */
-export interface MsgUpdateGroupPolicyAdminResponse {
-}
-/** MsgUpdateGroupPolicyAdminResponse is the Msg/UpdateGroupPolicyAdmin response type. */
-export interface MsgUpdateGroupPolicyAdminResponseSDKType {
-}
 /** MsgCreateGroupWithPolicy is the Msg/CreateGroupWithPolicy request type. */
 export interface MsgCreateGroupWithPolicy {
     /** admin is the account address of the group and group policy admin. */
@@ -248,6 +242,12 @@ export interface MsgCreateGroupWithPolicyResponseSDKType {
     /** group_policy_address is the account address of the newly created group policy. */
     group_policy_address: string;
 }
+/** MsgUpdateGroupPolicyAdminResponse is the Msg/UpdateGroupPolicyAdmin response type. */
+export interface MsgUpdateGroupPolicyAdminResponse {
+}
+/** MsgUpdateGroupPolicyAdminResponse is the Msg/UpdateGroupPolicyAdmin response type. */
+export interface MsgUpdateGroupPolicyAdminResponseSDKType {
+}
 /** MsgUpdateGroupPolicyDecisionPolicy is the Msg/UpdateGroupPolicyDecisionPolicy request type. */
 export interface MsgUpdateGroupPolicyDecisionPolicy {
     /** admin is the account address of the group admin. */
@@ -278,7 +278,7 @@ export interface MsgUpdateGroupPolicyMetadata {
     admin: string;
     /** group_policy_address is the account address of group policy. */
     groupPolicyAddress: string;
-    /** metadata is the group policy metadata to be updated. */
+    /** metadata is the updated group policy metadata. */
     metadata: string;
 }
 /** MsgUpdateGroupPolicyMetadata is the Msg/UpdateGroupPolicyMetadata request type. */
@@ -287,7 +287,7 @@ export interface MsgUpdateGroupPolicyMetadataSDKType {
     admin: string;
     /** group_policy_address is the account address of group policy. */
     group_policy_address: string;
-    /** metadata is the group policy metadata to be updated. */
+    /** metadata is the updated group policy metadata. */
     metadata: string;
 }
 /** MsgUpdateGroupPolicyMetadataResponse is the Msg/UpdateGroupPolicyMetadata response type. */
@@ -305,7 +305,7 @@ export interface MsgSubmitProposal {
      * Proposers signatures will be counted as yes votes.
      */
     proposers: string[];
-    /** metadata is any arbitrary metadata attached to the proposal. */
+    /** metadata is any arbitrary metadata to attached to the proposal. */
     metadata: string;
     /** messages is a list of `sdk.Msg`s that will be executed if the proposal passes. */
     messages: Any[];
@@ -315,18 +315,6 @@ export interface MsgSubmitProposal {
      * If so, proposers signatures are considered as Yes votes.
      */
     exec: Exec;
-    /**
-     * title is the title of the proposal.
-     *
-     * Since: cosmos-sdk 0.47
-     */
-    title: string;
-    /**
-     * summary is the summary of the proposal.
-     *
-     * Since: cosmos-sdk 0.47
-     */
-    summary: string;
 }
 /** MsgSubmitProposal is the Msg/SubmitProposal request type. */
 export interface MsgSubmitProposalSDKType {
@@ -337,7 +325,7 @@ export interface MsgSubmitProposalSDKType {
      * Proposers signatures will be counted as yes votes.
      */
     proposers: string[];
-    /** metadata is any arbitrary metadata attached to the proposal. */
+    /** metadata is any arbitrary metadata to attached to the proposal. */
     metadata: string;
     /** messages is a list of `sdk.Msg`s that will be executed if the proposal passes. */
     messages: AnySDKType[];
@@ -347,18 +335,6 @@ export interface MsgSubmitProposalSDKType {
      * If so, proposers signatures are considered as Yes votes.
      */
     exec: ExecSDKType;
-    /**
-     * title is the title of the proposal.
-     *
-     * Since: cosmos-sdk 0.47
-     */
-    title: string;
-    /**
-     * summary is the summary of the proposal.
-     *
-     * Since: cosmos-sdk 0.47
-     */
-    summary: string;
 }
 /** MsgSubmitProposalResponse is the Msg/SubmitProposal response type. */
 export interface MsgSubmitProposalResponse {
@@ -398,7 +374,7 @@ export interface MsgVote {
     voter: string;
     /** option is the voter's choice on the proposal. */
     option: VoteOption;
-    /** metadata is any arbitrary metadata attached to the vote. */
+    /** metadata is any arbitrary metadata to attached to the vote. */
     metadata: string;
     /**
      * exec defines whether the proposal should be executed
@@ -414,7 +390,7 @@ export interface MsgVoteSDKType {
     voter: string;
     /** option is the voter's choice on the proposal. */
     option: VoteOptionSDKType;
-    /** metadata is any arbitrary metadata attached to the vote. */
+    /** metadata is any arbitrary metadata to attached to the vote. */
     metadata: string;
     /**
      * exec defines whether the proposal should be executed
@@ -549,13 +525,6 @@ export declare const MsgUpdateGroupPolicyAdmin: {
     toJSON(message: MsgUpdateGroupPolicyAdmin): unknown;
     fromPartial(object: Partial<MsgUpdateGroupPolicyAdmin>): MsgUpdateGroupPolicyAdmin;
 };
-export declare const MsgUpdateGroupPolicyAdminResponse: {
-    encode(_: MsgUpdateGroupPolicyAdminResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateGroupPolicyAdminResponse;
-    fromJSON(_: any): MsgUpdateGroupPolicyAdminResponse;
-    toJSON(_: MsgUpdateGroupPolicyAdminResponse): unknown;
-    fromPartial(_: Partial<MsgUpdateGroupPolicyAdminResponse>): MsgUpdateGroupPolicyAdminResponse;
-};
 export declare const MsgCreateGroupWithPolicy: {
     encode(message: MsgCreateGroupWithPolicy, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateGroupWithPolicy;
@@ -569,6 +538,13 @@ export declare const MsgCreateGroupWithPolicyResponse: {
     fromJSON(object: any): MsgCreateGroupWithPolicyResponse;
     toJSON(message: MsgCreateGroupWithPolicyResponse): unknown;
     fromPartial(object: Partial<MsgCreateGroupWithPolicyResponse>): MsgCreateGroupWithPolicyResponse;
+};
+export declare const MsgUpdateGroupPolicyAdminResponse: {
+    encode(_: MsgUpdateGroupPolicyAdminResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateGroupPolicyAdminResponse;
+    fromJSON(_: any): MsgUpdateGroupPolicyAdminResponse;
+    toJSON(_: MsgUpdateGroupPolicyAdminResponse): unknown;
+    fromPartial(_: Partial<MsgUpdateGroupPolicyAdminResponse>): MsgUpdateGroupPolicyAdminResponse;
 };
 export declare const MsgUpdateGroupPolicyDecisionPolicy: {
     encode(message: MsgUpdateGroupPolicyDecisionPolicy, writer?: _m0.Writer): _m0.Writer;

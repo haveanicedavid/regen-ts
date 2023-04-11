@@ -8,7 +8,10 @@ import { BlockSDKType as Block2SDKType } from "./types";
 import { DefaultNodeInfo, DefaultNodeInfoSDKType } from "../../../../tendermint/p2p/types";
 import * as _m0 from "protobufjs/minimal";
 import { Long, isSet, bytesFromBase64, base64FromBytes } from "../../../../helpers";
-/** GetValidatorSetByHeightRequest is the request type for the Query/GetValidatorSetByHeight RPC method. */
+/**
+ * GetValidatorSetByHeightRequest is the request type for the
+ * Query/GetValidatorSetByHeight RPC method.
+ */
 
 export interface GetValidatorSetByHeightRequest {
   height: Long;
@@ -16,7 +19,10 @@ export interface GetValidatorSetByHeightRequest {
 
   pagination?: PageRequest;
 }
-/** GetValidatorSetByHeightRequest is the request type for the Query/GetValidatorSetByHeight RPC method. */
+/**
+ * GetValidatorSetByHeightRequest is the request type for the
+ * Query/GetValidatorSetByHeight RPC method.
+ */
 
 export interface GetValidatorSetByHeightRequestSDKType {
   height: Long;
@@ -24,7 +30,10 @@ export interface GetValidatorSetByHeightRequestSDKType {
 
   pagination?: PageRequestSDKType;
 }
-/** GetValidatorSetByHeightResponse is the response type for the Query/GetValidatorSetByHeight RPC method. */
+/**
+ * GetValidatorSetByHeightResponse is the response type for the
+ * Query/GetValidatorSetByHeight RPC method.
+ */
 
 export interface GetValidatorSetByHeightResponse {
   blockHeight: Long;
@@ -33,7 +42,10 @@ export interface GetValidatorSetByHeightResponse {
 
   pagination?: PageResponse;
 }
-/** GetValidatorSetByHeightResponse is the response type for the Query/GetValidatorSetByHeight RPC method. */
+/**
+ * GetValidatorSetByHeightResponse is the response type for the
+ * Query/GetValidatorSetByHeight RPC method.
+ */
 
 export interface GetValidatorSetByHeightResponseSDKType {
   block_height: Long;
@@ -42,19 +54,28 @@ export interface GetValidatorSetByHeightResponseSDKType {
 
   pagination?: PageResponseSDKType;
 }
-/** GetLatestValidatorSetRequest is the request type for the Query/GetValidatorSetByHeight RPC method. */
+/**
+ * GetLatestValidatorSetRequest is the request type for the
+ * Query/GetValidatorSetByHeight RPC method.
+ */
 
 export interface GetLatestValidatorSetRequest {
   /** pagination defines an pagination for the request. */
   pagination?: PageRequest;
 }
-/** GetLatestValidatorSetRequest is the request type for the Query/GetValidatorSetByHeight RPC method. */
+/**
+ * GetLatestValidatorSetRequest is the request type for the
+ * Query/GetValidatorSetByHeight RPC method.
+ */
 
 export interface GetLatestValidatorSetRequestSDKType {
   /** pagination defines an pagination for the request. */
   pagination?: PageRequestSDKType;
 }
-/** GetLatestValidatorSetResponse is the response type for the Query/GetValidatorSetByHeight RPC method. */
+/**
+ * GetLatestValidatorSetResponse is the response type for the
+ * Query/GetValidatorSetByHeight RPC method.
+ */
 
 export interface GetLatestValidatorSetResponse {
   blockHeight: Long;
@@ -63,7 +84,10 @@ export interface GetLatestValidatorSetResponse {
 
   pagination?: PageResponse;
 }
-/** GetLatestValidatorSetResponse is the response type for the Query/GetValidatorSetByHeight RPC method. */
+/**
+ * GetLatestValidatorSetResponse is the response type for the
+ * Query/GetValidatorSetByHeight RPC method.
+ */
 
 export interface GetLatestValidatorSetResponseSDKType {
   block_height: Long;
@@ -88,17 +112,26 @@ export interface ValidatorSDKType {
   voting_power: Long;
   proposer_priority: Long;
 }
-/** GetBlockByHeightRequest is the request type for the Query/GetBlockByHeight RPC method. */
+/**
+ * GetBlockByHeightRequest is the request type for the Query/GetBlockByHeight
+ * RPC method.
+ */
 
 export interface GetBlockByHeightRequest {
   height: Long;
 }
-/** GetBlockByHeightRequest is the request type for the Query/GetBlockByHeight RPC method. */
+/**
+ * GetBlockByHeightRequest is the request type for the Query/GetBlockByHeight
+ * RPC method.
+ */
 
 export interface GetBlockByHeightRequestSDKType {
   height: Long;
 }
-/** GetBlockByHeightResponse is the response type for the Query/GetBlockByHeight RPC method. */
+/**
+ * GetBlockByHeightResponse is the response type for the Query/GetBlockByHeight
+ * RPC method.
+ */
 
 export interface GetBlockByHeightResponse {
   blockId?: BlockID;
@@ -109,7 +142,10 @@ export interface GetBlockByHeightResponse {
 
   sdkBlock?: Block2;
 }
-/** GetBlockByHeightResponse is the response type for the Query/GetBlockByHeight RPC method. */
+/**
+ * GetBlockByHeightResponse is the response type for the Query/GetBlockByHeight
+ * RPC method.
+ */
 
 export interface GetBlockByHeightResponseSDKType {
   block_id?: BlockIDSDKType;
@@ -120,13 +156,22 @@ export interface GetBlockByHeightResponseSDKType {
 
   sdk_block?: Block2SDKType;
 }
-/** GetLatestBlockRequest is the request type for the Query/GetLatestBlock RPC method. */
+/**
+ * GetLatestBlockRequest is the request type for the Query/GetLatestBlock RPC
+ * method.
+ */
 
 export interface GetLatestBlockRequest {}
-/** GetLatestBlockRequest is the request type for the Query/GetLatestBlock RPC method. */
+/**
+ * GetLatestBlockRequest is the request type for the Query/GetLatestBlock RPC
+ * method.
+ */
 
 export interface GetLatestBlockRequestSDKType {}
-/** GetLatestBlockResponse is the response type for the Query/GetLatestBlock RPC method. */
+/**
+ * GetLatestBlockResponse is the response type for the Query/GetLatestBlock RPC
+ * method.
+ */
 
 export interface GetLatestBlockResponse {
   blockId?: BlockID;
@@ -137,7 +182,10 @@ export interface GetLatestBlockResponse {
 
   sdkBlock?: Block2;
 }
-/** GetLatestBlockResponse is the response type for the Query/GetLatestBlock RPC method. */
+/**
+ * GetLatestBlockResponse is the response type for the Query/GetLatestBlock RPC
+ * method.
+ */
 
 export interface GetLatestBlockResponseSDKType {
   block_id?: BlockIDSDKType;
@@ -170,13 +218,19 @@ export interface GetNodeInfoRequest {}
 /** GetNodeInfoRequest is the request type for the Query/GetNodeInfo RPC method. */
 
 export interface GetNodeInfoRequestSDKType {}
-/** GetNodeInfoResponse is the response type for the Query/GetNodeInfo RPC method. */
+/**
+ * GetNodeInfoResponse is the response type for the Query/GetNodeInfo RPC
+ * method.
+ */
 
 export interface GetNodeInfoResponse {
   defaultNodeInfo?: DefaultNodeInfo;
   applicationVersion?: VersionInfo;
 }
-/** GetNodeInfoResponse is the response type for the Query/GetNodeInfo RPC method. */
+/**
+ * GetNodeInfoResponse is the response type for the Query/GetNodeInfo RPC
+ * method.
+ */
 
 export interface GetNodeInfoResponseSDKType {
   default_node_info?: DefaultNodeInfoSDKType;
@@ -251,7 +305,8 @@ export interface ABCIQueryRequestSDKType {
   prove: boolean;
 }
 /**
- * ABCIQueryResponse defines the response structure for the ABCIQuery gRPC query.
+ * ABCIQueryResponse defines the response structure for the ABCIQuery gRPC
+ * query.
  * 
  * Note: This type is a duplicate of the ResponseQuery proto type defined in
  * Tendermint.
@@ -273,7 +328,8 @@ export interface ABCIQueryResponse {
   codespace: string;
 }
 /**
- * ABCIQueryResponse defines the response structure for the ABCIQuery gRPC query.
+ * ABCIQueryResponse defines the response structure for the ABCIQuery gRPC
+ * query.
  * 
  * Note: This type is a duplicate of the ResponseQuery proto type defined in
  * Tendermint.
@@ -296,10 +352,11 @@ export interface ABCIQueryResponseSDKType {
 }
 /**
  * ProofOp defines an operation used for calculating Merkle root. The data could
- * be arbitrary format, providing necessary data for example neighbouring node
+ * be arbitrary format, providing nessecary data for example neighbouring node
  * hash.
  * 
- * Note: This type is a duplicate of the ProofOp proto type defined in Tendermint.
+ * Note: This type is a duplicate of the ProofOp proto type defined in
+ * Tendermint.
  */
 
 export interface ProofOp {
@@ -309,10 +366,11 @@ export interface ProofOp {
 }
 /**
  * ProofOp defines an operation used for calculating Merkle root. The data could
- * be arbitrary format, providing necessary data for example neighbouring node
+ * be arbitrary format, providing nessecary data for example neighbouring node
  * hash.
  * 
- * Note: This type is a duplicate of the ProofOp proto type defined in Tendermint.
+ * Note: This type is a duplicate of the ProofOp proto type defined in
+ * Tendermint.
  */
 
 export interface ProofOpSDKType {
@@ -323,7 +381,8 @@ export interface ProofOpSDKType {
 /**
  * ProofOps is Merkle proof defined by the list of ProofOps.
  * 
- * Note: This type is a duplicate of the ProofOps proto type defined in Tendermint.
+ * Note: This type is a duplicate of the ProofOps proto type defined in
+ * Tendermint.
  */
 
 export interface ProofOps {
@@ -332,7 +391,8 @@ export interface ProofOps {
 /**
  * ProofOps is Merkle proof defined by the list of ProofOps.
  * 
- * Note: This type is a duplicate of the ProofOps proto type defined in Tendermint.
+ * Note: This type is a duplicate of the ProofOps proto type defined in
+ * Tendermint.
  */
 
 export interface ProofOpsSDKType {

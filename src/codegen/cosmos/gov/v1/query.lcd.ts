@@ -1,6 +1,6 @@
 import { setPaginationParams } from "../../../helpers";
 import { LCDClient } from "@osmonauts/lcd";
-import { QueryConstitutionRequest, QueryConstitutionResponseSDKType, QueryProposalRequest, QueryProposalResponseSDKType, QueryProposalsRequest, QueryProposalsResponseSDKType, QueryVoteRequest, QueryVoteResponseSDKType, QueryVotesRequest, QueryVotesResponseSDKType, QueryParamsRequest, QueryParamsResponseSDKType, QueryDepositRequest, QueryDepositResponseSDKType, QueryDepositsRequest, QueryDepositsResponseSDKType, QueryTallyResultRequest, QueryTallyResultResponseSDKType } from "./query";
+import { QueryProposalRequest, QueryProposalResponseSDKType, QueryProposalsRequest, QueryProposalsResponseSDKType, QueryVoteRequest, QueryVoteResponseSDKType, QueryVotesRequest, QueryVotesResponseSDKType, QueryParamsRequest, QueryParamsResponseSDKType, QueryDepositRequest, QueryDepositResponseSDKType, QueryDepositsRequest, QueryDepositsResponseSDKType, QueryTallyResultRequest, QueryTallyResultResponseSDKType } from "./query";
 export class LCDQueryClient {
   req: LCDClient;
 
@@ -10,7 +10,6 @@ export class LCDQueryClient {
     requestClient: LCDClient;
   }) {
     this.req = requestClient;
-    this.constitution = this.constitution.bind(this);
     this.proposal = this.proposal.bind(this);
     this.proposals = this.proposals.bind(this);
     this.vote = this.vote.bind(this);
@@ -19,13 +18,6 @@ export class LCDQueryClient {
     this.deposit = this.deposit.bind(this);
     this.deposits = this.deposits.bind(this);
     this.tallyResult = this.tallyResult.bind(this);
-  }
-  /* Constitution queries the chain's constitution. */
-
-
-  async constitution(_params: QueryConstitutionRequest = {}): Promise<QueryConstitutionResponseSDKType> {
-    const endpoint = `cosmos/gov/v1/constitution`;
-    return await this.req.get<QueryConstitutionResponseSDKType>(endpoint);
   }
   /* Proposal queries proposal details based on ProposalID. */
 

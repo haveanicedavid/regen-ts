@@ -1,6 +1,6 @@
 import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
 import { Coin, CoinSDKType } from "../../base/v1beta1/coin";
-import { Params, ParamsSDKType, Metadata, MetadataSDKType, SendEnabled, SendEnabledSDKType } from "./bank";
+import { Params, ParamsSDKType, Metadata, MetadataSDKType } from "./bank";
 import * as _m0 from "protobufjs/minimal";
 /** QueryBalanceRequest is the request type for the Query/Balance RPC method. */
 export interface QueryBalanceRequest {
@@ -32,12 +32,6 @@ export interface QueryAllBalancesRequest {
     address: string;
     /** pagination defines an optional pagination for the request. */
     pagination?: PageRequest;
-    /**
-     * resolve_denom is the flag to resolve the denom into a human-readable form from the metadata.
-     *
-     * Since: cosmos-sdk 0.48
-     */
-    resolveDenom: boolean;
 }
 /** QueryBalanceRequest is the request type for the Query/AllBalances RPC method. */
 export interface QueryAllBalancesRequestSDKType {
@@ -45,12 +39,6 @@ export interface QueryAllBalancesRequestSDKType {
     address: string;
     /** pagination defines an optional pagination for the request. */
     pagination?: PageRequestSDKType;
-    /**
-     * resolve_denom is the flag to resolve the denom into a human-readable form from the metadata.
-     *
-     * Since: cosmos-sdk 0.48
-     */
-    resolve_denom: boolean;
 }
 /**
  * QueryAllBalancesResponse is the response type for the Query/AllBalances RPC
@@ -119,50 +107,6 @@ export interface QuerySpendableBalancesResponseSDKType {
     balances: CoinSDKType[];
     /** pagination defines the pagination in the response. */
     pagination?: PageResponseSDKType;
-}
-/**
- * QuerySpendableBalanceByDenomRequest defines the gRPC request structure for
- * querying an account's spendable balance for a specific denom.
- *
- * Since: cosmos-sdk 0.47
- */
-export interface QuerySpendableBalanceByDenomRequest {
-    /** address is the address to query balances for. */
-    address: string;
-    /** denom is the coin denom to query balances for. */
-    denom: string;
-}
-/**
- * QuerySpendableBalanceByDenomRequest defines the gRPC request structure for
- * querying an account's spendable balance for a specific denom.
- *
- * Since: cosmos-sdk 0.47
- */
-export interface QuerySpendableBalanceByDenomRequestSDKType {
-    /** address is the address to query balances for. */
-    address: string;
-    /** denom is the coin denom to query balances for. */
-    denom: string;
-}
-/**
- * QuerySpendableBalanceByDenomResponse defines the gRPC response structure for
- * querying an account's spendable balance for a specific denom.
- *
- * Since: cosmos-sdk 0.47
- */
-export interface QuerySpendableBalanceByDenomResponse {
-    /** balance is the balance of the coin. */
-    balance?: Coin;
-}
-/**
- * QuerySpendableBalanceByDenomResponse defines the gRPC response structure for
- * querying an account's spendable balance for a specific denom.
- *
- * Since: cosmos-sdk 0.47
- */
-export interface QuerySpendableBalanceByDenomResponseSDKType {
-    /** balance is the balance of the coin. */
-    balance?: CoinSDKType;
 }
 /**
  * QueryTotalSupplyRequest is the request type for the Query/TotalSupply RPC
@@ -374,60 +318,6 @@ export interface QueryDenomOwnersResponseSDKType {
     /** pagination defines the pagination in the response. */
     pagination?: PageResponseSDKType;
 }
-/**
- * QuerySendEnabledRequest defines the RPC request for looking up SendEnabled entries.
- *
- * Since: cosmos-sdk 0.47
- */
-export interface QuerySendEnabledRequest {
-    /** denoms is the specific denoms you want look up. Leave empty to get all entries. */
-    denoms: string[];
-    /**
-     * pagination defines an optional pagination for the request. This field is
-     * only read if the denoms field is empty.
-     */
-    pagination?: PageRequest;
-}
-/**
- * QuerySendEnabledRequest defines the RPC request for looking up SendEnabled entries.
- *
- * Since: cosmos-sdk 0.47
- */
-export interface QuerySendEnabledRequestSDKType {
-    /** denoms is the specific denoms you want look up. Leave empty to get all entries. */
-    denoms: string[];
-    /**
-     * pagination defines an optional pagination for the request. This field is
-     * only read if the denoms field is empty.
-     */
-    pagination?: PageRequestSDKType;
-}
-/**
- * QuerySendEnabledResponse defines the RPC response of a SendEnable query.
- *
- * Since: cosmos-sdk 0.47
- */
-export interface QuerySendEnabledResponse {
-    sendEnabled: SendEnabled[];
-    /**
-     * pagination defines the pagination in the response. This field is only
-     * populated if the denoms field in the request is empty.
-     */
-    pagination?: PageResponse;
-}
-/**
- * QuerySendEnabledResponse defines the RPC response of a SendEnable query.
- *
- * Since: cosmos-sdk 0.47
- */
-export interface QuerySendEnabledResponseSDKType {
-    send_enabled: SendEnabledSDKType[];
-    /**
-     * pagination defines the pagination in the response. This field is only
-     * populated if the denoms field in the request is empty.
-     */
-    pagination?: PageResponseSDKType;
-}
 export declare const QueryBalanceRequest: {
     encode(message: QueryBalanceRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryBalanceRequest;
@@ -469,20 +359,6 @@ export declare const QuerySpendableBalancesResponse: {
     fromJSON(object: any): QuerySpendableBalancesResponse;
     toJSON(message: QuerySpendableBalancesResponse): unknown;
     fromPartial(object: Partial<QuerySpendableBalancesResponse>): QuerySpendableBalancesResponse;
-};
-export declare const QuerySpendableBalanceByDenomRequest: {
-    encode(message: QuerySpendableBalanceByDenomRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QuerySpendableBalanceByDenomRequest;
-    fromJSON(object: any): QuerySpendableBalanceByDenomRequest;
-    toJSON(message: QuerySpendableBalanceByDenomRequest): unknown;
-    fromPartial(object: Partial<QuerySpendableBalanceByDenomRequest>): QuerySpendableBalanceByDenomRequest;
-};
-export declare const QuerySpendableBalanceByDenomResponse: {
-    encode(message: QuerySpendableBalanceByDenomResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QuerySpendableBalanceByDenomResponse;
-    fromJSON(object: any): QuerySpendableBalanceByDenomResponse;
-    toJSON(message: QuerySpendableBalanceByDenomResponse): unknown;
-    fromPartial(object: Partial<QuerySpendableBalanceByDenomResponse>): QuerySpendableBalanceByDenomResponse;
 };
 export declare const QueryTotalSupplyRequest: {
     encode(message: QueryTotalSupplyRequest, writer?: _m0.Writer): _m0.Writer;
@@ -574,18 +450,4 @@ export declare const QueryDenomOwnersResponse: {
     fromJSON(object: any): QueryDenomOwnersResponse;
     toJSON(message: QueryDenomOwnersResponse): unknown;
     fromPartial(object: Partial<QueryDenomOwnersResponse>): QueryDenomOwnersResponse;
-};
-export declare const QuerySendEnabledRequest: {
-    encode(message: QuerySendEnabledRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QuerySendEnabledRequest;
-    fromJSON(object: any): QuerySendEnabledRequest;
-    toJSON(message: QuerySendEnabledRequest): unknown;
-    fromPartial(object: Partial<QuerySendEnabledRequest>): QuerySendEnabledRequest;
-};
-export declare const QuerySendEnabledResponse: {
-    encode(message: QuerySendEnabledResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QuerySendEnabledResponse;
-    fromJSON(object: any): QuerySendEnabledResponse;
-    toJSON(message: QuerySendEnabledResponse): unknown;
-    fromPartial(object: Partial<QuerySendEnabledResponse>): QuerySendEnabledResponse;
 };

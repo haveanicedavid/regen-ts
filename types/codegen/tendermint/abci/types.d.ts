@@ -1,7 +1,7 @@
 import { Timestamp, TimestampSDKType } from "../../google/protobuf/timestamp";
-import { ConsensusParams, ConsensusParamsSDKType } from "../types/params";
 import { Header, HeaderSDKType } from "../types/types";
 import { ProofOps, ProofOpsSDKType } from "../crypto/proof";
+import { EvidenceParams, EvidenceParamsSDKType, ValidatorParams, ValidatorParamsSDKType, VersionParams, VersionParamsSDKType } from "../types/params";
 import { PublicKey, PublicKeySDKType } from "../crypto/keys";
 import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../helpers";
@@ -81,38 +81,25 @@ export declare enum ResponseApplySnapshotChunk_ResultSDKType {
 }
 export declare function responseApplySnapshotChunk_ResultFromJSON(object: any): ResponseApplySnapshotChunk_Result;
 export declare function responseApplySnapshotChunk_ResultToJSON(object: ResponseApplySnapshotChunk_Result): string;
-export declare enum ResponseProcessProposal_ProposalStatus {
-    UNKNOWN = 0,
-    ACCEPT = 1,
-    REJECT = 2,
-    UNRECOGNIZED = -1
-}
-export declare enum ResponseProcessProposal_ProposalStatusSDKType {
-    UNKNOWN = 0,
-    ACCEPT = 1,
-    REJECT = 2,
-    UNRECOGNIZED = -1
-}
-export declare function responseProcessProposal_ProposalStatusFromJSON(object: any): ResponseProcessProposal_ProposalStatus;
-export declare function responseProcessProposal_ProposalStatusToJSON(object: ResponseProcessProposal_ProposalStatus): string;
-export declare enum MisbehaviorType {
+export declare enum EvidenceType {
     UNKNOWN = 0,
     DUPLICATE_VOTE = 1,
     LIGHT_CLIENT_ATTACK = 2,
     UNRECOGNIZED = -1
 }
-export declare enum MisbehaviorTypeSDKType {
+export declare enum EvidenceTypeSDKType {
     UNKNOWN = 0,
     DUPLICATE_VOTE = 1,
     LIGHT_CLIENT_ATTACK = 2,
     UNRECOGNIZED = -1
 }
-export declare function misbehaviorTypeFromJSON(object: any): MisbehaviorType;
-export declare function misbehaviorTypeToJSON(object: MisbehaviorType): string;
+export declare function evidenceTypeFromJSON(object: any): EvidenceType;
+export declare function evidenceTypeToJSON(object: EvidenceType): string;
 export interface Request {
     echo?: RequestEcho;
     flush?: RequestFlush;
     info?: RequestInfo;
+    setOption?: RequestSetOption;
     initChain?: RequestInitChain;
     query?: RequestQuery;
     beginBlock?: RequestBeginBlock;
@@ -124,13 +111,12 @@ export interface Request {
     offerSnapshot?: RequestOfferSnapshot;
     loadSnapshotChunk?: RequestLoadSnapshotChunk;
     applySnapshotChunk?: RequestApplySnapshotChunk;
-    prepareProposal?: RequestPrepareProposal;
-    processProposal?: RequestProcessProposal;
 }
 export interface RequestSDKType {
     echo?: RequestEchoSDKType;
     flush?: RequestFlushSDKType;
     info?: RequestInfoSDKType;
+    set_option?: RequestSetOptionSDKType;
     init_chain?: RequestInitChainSDKType;
     query?: RequestQuerySDKType;
     begin_block?: RequestBeginBlockSDKType;
@@ -142,8 +128,6 @@ export interface RequestSDKType {
     offer_snapshot?: RequestOfferSnapshotSDKType;
     load_snapshot_chunk?: RequestLoadSnapshotChunkSDKType;
     apply_snapshot_chunk?: RequestApplySnapshotChunkSDKType;
-    prepare_proposal?: RequestPrepareProposalSDKType;
-    process_proposal?: RequestProcessProposalSDKType;
 }
 export interface RequestEcho {
     message: string;
@@ -159,13 +143,21 @@ export interface RequestInfo {
     version: string;
     blockVersion: Long;
     p2pVersion: Long;
-    abciVersion: string;
 }
 export interface RequestInfoSDKType {
     version: string;
     block_version: Long;
     p2p_version: Long;
-    abci_version: string;
+}
+/** nondeterministic */
+export interface RequestSetOption {
+    key: string;
+    value: string;
+}
+/** nondeterministic */
+export interface RequestSetOptionSDKType {
+    key: string;
+    value: string;
 }
 export interface RequestInitChain {
     time?: Timestamp;
@@ -198,14 +190,14 @@ export interface RequestQuerySDKType {
 export interface RequestBeginBlock {
     hash: Uint8Array;
     header?: Header;
-    lastCommitInfo?: CommitInfo;
-    byzantineValidators: Misbehavior[];
+    lastCommitInfo?: LastCommitInfo;
+    byzantineValidators: Evidence[];
 }
 export interface RequestBeginBlockSDKType {
     hash: Uint8Array;
     header?: HeaderSDKType;
-    last_commit_info?: CommitInfoSDKType;
-    byzantine_validators: MisbehaviorSDKType[];
+    last_commit_info?: LastCommitInfoSDKType;
+    byzantine_validators: EvidenceSDKType[];
 }
 export interface RequestCheckTx {
     tx: Uint8Array;
@@ -275,67 +267,12 @@ export interface RequestApplySnapshotChunkSDKType {
     chunk: Uint8Array;
     sender: string;
 }
-export interface RequestPrepareProposal {
-    /** the modified transactions cannot exceed this size. */
-    maxTxBytes: Long;
-    /**
-     * txs is an array of transactions that will be included in a block,
-     * sent to the app for possible modifications.
-     */
-    txs: Uint8Array[];
-    localLastCommit?: ExtendedCommitInfo;
-    misbehavior: Misbehavior[];
-    height: Long;
-    time?: Timestamp;
-    nextValidatorsHash: Uint8Array;
-    /** address of the public key of the validator proposing the block. */
-    proposerAddress: Uint8Array;
-}
-export interface RequestPrepareProposalSDKType {
-    /** the modified transactions cannot exceed this size. */
-    max_tx_bytes: Long;
-    /**
-     * txs is an array of transactions that will be included in a block,
-     * sent to the app for possible modifications.
-     */
-    txs: Uint8Array[];
-    local_last_commit?: ExtendedCommitInfoSDKType;
-    misbehavior: MisbehaviorSDKType[];
-    height: Long;
-    time?: TimestampSDKType;
-    next_validators_hash: Uint8Array;
-    /** address of the public key of the validator proposing the block. */
-    proposer_address: Uint8Array;
-}
-export interface RequestProcessProposal {
-    txs: Uint8Array[];
-    proposedLastCommit?: CommitInfo;
-    misbehavior: Misbehavior[];
-    /** hash is the merkle root hash of the fields of the proposed block. */
-    hash: Uint8Array;
-    height: Long;
-    time?: Timestamp;
-    nextValidatorsHash: Uint8Array;
-    /** address of the public key of the original proposer of the block. */
-    proposerAddress: Uint8Array;
-}
-export interface RequestProcessProposalSDKType {
-    txs: Uint8Array[];
-    proposed_last_commit?: CommitInfoSDKType;
-    misbehavior: MisbehaviorSDKType[];
-    /** hash is the merkle root hash of the fields of the proposed block. */
-    hash: Uint8Array;
-    height: Long;
-    time?: TimestampSDKType;
-    next_validators_hash: Uint8Array;
-    /** address of the public key of the original proposer of the block. */
-    proposer_address: Uint8Array;
-}
 export interface Response {
     exception?: ResponseException;
     echo?: ResponseEcho;
     flush?: ResponseFlush;
     info?: ResponseInfo;
+    setOption?: ResponseSetOption;
     initChain?: ResponseInitChain;
     query?: ResponseQuery;
     beginBlock?: ResponseBeginBlock;
@@ -347,14 +284,13 @@ export interface Response {
     offerSnapshot?: ResponseOfferSnapshot;
     loadSnapshotChunk?: ResponseLoadSnapshotChunk;
     applySnapshotChunk?: ResponseApplySnapshotChunk;
-    prepareProposal?: ResponsePrepareProposal;
-    processProposal?: ResponseProcessProposal;
 }
 export interface ResponseSDKType {
     exception?: ResponseExceptionSDKType;
     echo?: ResponseEchoSDKType;
     flush?: ResponseFlushSDKType;
     info?: ResponseInfoSDKType;
+    set_option?: ResponseSetOptionSDKType;
     init_chain?: ResponseInitChainSDKType;
     query?: ResponseQuerySDKType;
     begin_block?: ResponseBeginBlockSDKType;
@@ -366,8 +302,6 @@ export interface ResponseSDKType {
     offer_snapshot?: ResponseOfferSnapshotSDKType;
     load_snapshot_chunk?: ResponseLoadSnapshotChunkSDKType;
     apply_snapshot_chunk?: ResponseApplySnapshotChunkSDKType;
-    prepare_proposal?: ResponsePrepareProposalSDKType;
-    process_proposal?: ResponseProcessProposalSDKType;
 }
 /** nondeterministic */
 export interface ResponseException {
@@ -400,6 +334,20 @@ export interface ResponseInfoSDKType {
     app_version: Long;
     last_block_height: Long;
     last_block_app_hash: Uint8Array;
+}
+/** nondeterministic */
+export interface ResponseSetOption {
+    code: number;
+    /** bytes data = 2; */
+    log: string;
+    info: string;
+}
+/** nondeterministic */
+export interface ResponseSetOptionSDKType {
+    code: number;
+    /** bytes data = 2; */
+    log: string;
+    info: string;
 }
 export interface ResponseInitChain {
     consensusParams?: ConsensusParams;
@@ -557,43 +505,47 @@ export interface ResponseApplySnapshotChunkSDKType {
     /** Chunk senders to reject and ban */
     reject_senders: string[];
 }
-export interface ResponsePrepareProposal {
-    txs: Uint8Array[];
+/**
+ * ConsensusParams contains all consensus-relevant parameters
+ * that can be adjusted by the abci app
+ */
+export interface ConsensusParams {
+    block?: BlockParams;
+    evidence?: EvidenceParams;
+    validator?: ValidatorParams;
+    version?: VersionParams;
 }
-export interface ResponsePrepareProposalSDKType {
-    txs: Uint8Array[];
+/**
+ * ConsensusParams contains all consensus-relevant parameters
+ * that can be adjusted by the abci app
+ */
+export interface ConsensusParamsSDKType {
+    block?: BlockParamsSDKType;
+    evidence?: EvidenceParamsSDKType;
+    validator?: ValidatorParamsSDKType;
+    version?: VersionParamsSDKType;
 }
-export interface ResponseProcessProposal {
-    status: ResponseProcessProposal_ProposalStatus;
+/** BlockParams contains limits on the block size. */
+export interface BlockParams {
+    /** Note: must be greater than 0 */
+    maxBytes: Long;
+    /** Note: must be greater or equal to -1 */
+    maxGas: Long;
 }
-export interface ResponseProcessProposalSDKType {
-    status: ResponseProcessProposal_ProposalStatusSDKType;
+/** BlockParams contains limits on the block size. */
+export interface BlockParamsSDKType {
+    /** Note: must be greater than 0 */
+    max_bytes: Long;
+    /** Note: must be greater or equal to -1 */
+    max_gas: Long;
 }
-export interface CommitInfo {
+export interface LastCommitInfo {
     round: number;
     votes: VoteInfo[];
 }
-export interface CommitInfoSDKType {
+export interface LastCommitInfoSDKType {
     round: number;
     votes: VoteInfoSDKType[];
-}
-export interface ExtendedCommitInfo {
-    /** The round at which the block proposer decided in the previous height. */
-    round: number;
-    /**
-     * List of validators' addresses in the last validator set with their voting
-     * information, including vote extensions.
-     */
-    votes: ExtendedVoteInfo[];
-}
-export interface ExtendedCommitInfoSDKType {
-    /** The round at which the block proposer decided in the previous height. */
-    round: number;
-    /**
-     * List of validators' addresses in the last validator set with their voting
-     * information, including vote extensions.
-     */
-    votes: ExtendedVoteInfoSDKType[];
 }
 /**
  * Event allows application developers to attach additional information to
@@ -615,15 +567,15 @@ export interface EventSDKType {
 }
 /** EventAttribute is a single key-value pair, associated with an event. */
 export interface EventAttribute {
-    key: string;
-    value: string;
+    key: Uint8Array;
+    value: Uint8Array;
     /** nondeterministic */
     index: boolean;
 }
 /** EventAttribute is a single key-value pair, associated with an event. */
 export interface EventAttributeSDKType {
-    key: string;
-    value: string;
+    key: Uint8Array;
+    value: Uint8Array;
     /** nondeterministic */
     index: boolean;
 }
@@ -689,20 +641,8 @@ export interface VoteInfoSDKType {
     validator?: ValidatorSDKType;
     signed_last_block: boolean;
 }
-export interface ExtendedVoteInfo {
-    validator?: Validator;
-    signedLastBlock: boolean;
-    /** Reserved for future use */
-    voteExtension: Uint8Array;
-}
-export interface ExtendedVoteInfoSDKType {
-    validator?: ValidatorSDKType;
-    signed_last_block: boolean;
-    /** Reserved for future use */
-    vote_extension: Uint8Array;
-}
-export interface Misbehavior {
-    type: MisbehaviorType;
+export interface Evidence {
+    type: EvidenceType;
     /** The offending validator */
     validator?: Validator;
     /** The height when the offense occurred */
@@ -716,8 +656,8 @@ export interface Misbehavior {
      */
     totalVotingPower: Long;
 }
-export interface MisbehaviorSDKType {
-    type: MisbehaviorTypeSDKType;
+export interface EvidenceSDKType {
+    type: EvidenceTypeSDKType;
     /** The offending validator */
     validator?: ValidatorSDKType;
     /** The height when the offense occurred */
@@ -782,6 +722,13 @@ export declare const RequestInfo: {
     fromJSON(object: any): RequestInfo;
     toJSON(message: RequestInfo): unknown;
     fromPartial(object: Partial<RequestInfo>): RequestInfo;
+};
+export declare const RequestSetOption: {
+    encode(message: RequestSetOption, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): RequestSetOption;
+    fromJSON(object: any): RequestSetOption;
+    toJSON(message: RequestSetOption): unknown;
+    fromPartial(object: Partial<RequestSetOption>): RequestSetOption;
 };
 export declare const RequestInitChain: {
     encode(message: RequestInitChain, writer?: _m0.Writer): _m0.Writer;
@@ -860,20 +807,6 @@ export declare const RequestApplySnapshotChunk: {
     toJSON(message: RequestApplySnapshotChunk): unknown;
     fromPartial(object: Partial<RequestApplySnapshotChunk>): RequestApplySnapshotChunk;
 };
-export declare const RequestPrepareProposal: {
-    encode(message: RequestPrepareProposal, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): RequestPrepareProposal;
-    fromJSON(object: any): RequestPrepareProposal;
-    toJSON(message: RequestPrepareProposal): unknown;
-    fromPartial(object: Partial<RequestPrepareProposal>): RequestPrepareProposal;
-};
-export declare const RequestProcessProposal: {
-    encode(message: RequestProcessProposal, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): RequestProcessProposal;
-    fromJSON(object: any): RequestProcessProposal;
-    toJSON(message: RequestProcessProposal): unknown;
-    fromPartial(object: Partial<RequestProcessProposal>): RequestProcessProposal;
-};
 export declare const Response: {
     encode(message: Response, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Response;
@@ -908,6 +841,13 @@ export declare const ResponseInfo: {
     fromJSON(object: any): ResponseInfo;
     toJSON(message: ResponseInfo): unknown;
     fromPartial(object: Partial<ResponseInfo>): ResponseInfo;
+};
+export declare const ResponseSetOption: {
+    encode(message: ResponseSetOption, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseSetOption;
+    fromJSON(object: any): ResponseSetOption;
+    toJSON(message: ResponseSetOption): unknown;
+    fromPartial(object: Partial<ResponseSetOption>): ResponseSetOption;
 };
 export declare const ResponseInitChain: {
     encode(message: ResponseInitChain, writer?: _m0.Writer): _m0.Writer;
@@ -986,33 +926,26 @@ export declare const ResponseApplySnapshotChunk: {
     toJSON(message: ResponseApplySnapshotChunk): unknown;
     fromPartial(object: Partial<ResponseApplySnapshotChunk>): ResponseApplySnapshotChunk;
 };
-export declare const ResponsePrepareProposal: {
-    encode(message: ResponsePrepareProposal, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ResponsePrepareProposal;
-    fromJSON(object: any): ResponsePrepareProposal;
-    toJSON(message: ResponsePrepareProposal): unknown;
-    fromPartial(object: Partial<ResponsePrepareProposal>): ResponsePrepareProposal;
+export declare const ConsensusParams: {
+    encode(message: ConsensusParams, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): ConsensusParams;
+    fromJSON(object: any): ConsensusParams;
+    toJSON(message: ConsensusParams): unknown;
+    fromPartial(object: Partial<ConsensusParams>): ConsensusParams;
 };
-export declare const ResponseProcessProposal: {
-    encode(message: ResponseProcessProposal, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ResponseProcessProposal;
-    fromJSON(object: any): ResponseProcessProposal;
-    toJSON(message: ResponseProcessProposal): unknown;
-    fromPartial(object: Partial<ResponseProcessProposal>): ResponseProcessProposal;
+export declare const BlockParams: {
+    encode(message: BlockParams, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): BlockParams;
+    fromJSON(object: any): BlockParams;
+    toJSON(message: BlockParams): unknown;
+    fromPartial(object: Partial<BlockParams>): BlockParams;
 };
-export declare const CommitInfo: {
-    encode(message: CommitInfo, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): CommitInfo;
-    fromJSON(object: any): CommitInfo;
-    toJSON(message: CommitInfo): unknown;
-    fromPartial(object: Partial<CommitInfo>): CommitInfo;
-};
-export declare const ExtendedCommitInfo: {
-    encode(message: ExtendedCommitInfo, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ExtendedCommitInfo;
-    fromJSON(object: any): ExtendedCommitInfo;
-    toJSON(message: ExtendedCommitInfo): unknown;
-    fromPartial(object: Partial<ExtendedCommitInfo>): ExtendedCommitInfo;
+export declare const LastCommitInfo: {
+    encode(message: LastCommitInfo, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): LastCommitInfo;
+    fromJSON(object: any): LastCommitInfo;
+    toJSON(message: LastCommitInfo): unknown;
+    fromPartial(object: Partial<LastCommitInfo>): LastCommitInfo;
 };
 export declare const Event: {
     encode(message: Event, writer?: _m0.Writer): _m0.Writer;
@@ -1056,19 +989,12 @@ export declare const VoteInfo: {
     toJSON(message: VoteInfo): unknown;
     fromPartial(object: Partial<VoteInfo>): VoteInfo;
 };
-export declare const ExtendedVoteInfo: {
-    encode(message: ExtendedVoteInfo, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ExtendedVoteInfo;
-    fromJSON(object: any): ExtendedVoteInfo;
-    toJSON(message: ExtendedVoteInfo): unknown;
-    fromPartial(object: Partial<ExtendedVoteInfo>): ExtendedVoteInfo;
-};
-export declare const Misbehavior: {
-    encode(message: Misbehavior, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Misbehavior;
-    fromJSON(object: any): Misbehavior;
-    toJSON(message: Misbehavior): unknown;
-    fromPartial(object: Partial<Misbehavior>): Misbehavior;
+export declare const Evidence: {
+    encode(message: Evidence, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): Evidence;
+    fromJSON(object: any): Evidence;
+    toJSON(message: Evidence): unknown;
+    fromPartial(object: Partial<Evidence>): Evidence;
 };
 export declare const Snapshot: {
     encode(message: Snapshot, writer?: _m0.Writer): _m0.Writer;

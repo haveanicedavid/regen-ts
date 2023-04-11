@@ -1,5 +1,5 @@
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
-import { MsgCreateValidator, MsgEditValidator, MsgDelegate, MsgBeginRedelegate, MsgUndelegate, MsgCancelUnbondingDelegation, MsgUpdateParams } from "./tx";
+import { MsgCreateValidator, MsgEditValidator, MsgDelegate, MsgBeginRedelegate, MsgUndelegate, MsgCancelUnbondingDelegation } from "./tx";
 export declare const registry: ReadonlyArray<[string, GeneratedType]>;
 export declare const load: (protoRegistry: Registry) => void;
 export declare const MessageComposer: {
@@ -25,10 +25,6 @@ export declare const MessageComposer: {
             value: Uint8Array;
         };
         cancelUnbondingDelegation(value: MsgCancelUnbondingDelegation): {
-            typeUrl: string;
-            value: Uint8Array;
-        };
-        updateParams(value: MsgUpdateParams): {
             typeUrl: string;
             value: Uint8Array;
         };
@@ -58,10 +54,6 @@ export declare const MessageComposer: {
             typeUrl: string;
             value: MsgCancelUnbondingDelegation;
         };
-        updateParams(value: MsgUpdateParams): {
-            typeUrl: string;
-            value: MsgUpdateParams;
-        };
     };
     toJSON: {
         createValidator(value: MsgCreateValidator): {
@@ -85,10 +77,6 @@ export declare const MessageComposer: {
             value: unknown;
         };
         cancelUnbondingDelegation(value: MsgCancelUnbondingDelegation): {
-            typeUrl: string;
-            value: unknown;
-        };
-        updateParams(value: MsgUpdateParams): {
             typeUrl: string;
             value: unknown;
         };
@@ -118,10 +106,6 @@ export declare const MessageComposer: {
             typeUrl: string;
             value: MsgCancelUnbondingDelegation;
         };
-        updateParams(value: any): {
-            typeUrl: string;
-            value: MsgUpdateParams;
-        };
     };
     fromPartial: {
         createValidator(value: MsgCreateValidator): {
@@ -147,10 +131,6 @@ export declare const MessageComposer: {
         cancelUnbondingDelegation(value: MsgCancelUnbondingDelegation): {
             typeUrl: string;
             value: MsgCancelUnbondingDelegation;
-        };
-        updateParams(value: MsgUpdateParams): {
-            typeUrl: string;
-            value: MsgUpdateParams;
         };
     };
 };

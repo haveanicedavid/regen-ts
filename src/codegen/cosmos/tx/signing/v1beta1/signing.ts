@@ -29,9 +29,7 @@ export enum SignMode {
   /**
    * SIGN_MODE_TEXTUAL - SIGN_MODE_TEXTUAL is a future signing mode that will verify some
    * human-readable textual representation on top of the binary representation
-   * from SIGN_MODE_DIRECT. It is currently experimental, and should be used
-   * for testing purposes only, until Textual is fully released. Please follow
-   * the tracking issue https://github.com/cosmos/cosmos-sdk/issues/11970.
+   * from SIGN_MODE_DIRECT. It is currently not supported.
    */
   SIGN_MODE_TEXTUAL = 2,
 
@@ -93,9 +91,7 @@ export enum SignModeSDKType {
   /**
    * SIGN_MODE_TEXTUAL - SIGN_MODE_TEXTUAL is a future signing mode that will verify some
    * human-readable textual representation on top of the binary representation
-   * from SIGN_MODE_DIRECT. It is currently experimental, and should be used
-   * for testing purposes only, until Textual is fully released. Please follow
-   * the tracking issue https://github.com/cosmos/cosmos-sdk/issues/11970.
+   * from SIGN_MODE_DIRECT. It is currently not supported.
    */
   SIGN_MODE_TEXTUAL = 2,
 

@@ -1,5 +1,5 @@
 import { AminoMsg } from "@cosmjs/amino";
-import { MsgSubmitProposal, MsgExecLegacyContent, MsgVote, MsgVoteWeighted, MsgDeposit, MsgUpdateParams, MsgCancelProposal } from "./tx";
+import { MsgSubmitProposal, MsgExecLegacyContent, MsgVote, MsgVoteWeighted, MsgDeposit } from "./tx";
 export interface AminoMsgSubmitProposal extends AminoMsg {
     type: "cosmos-sdk/v1/MsgSubmitProposal";
     value: {
@@ -13,9 +13,6 @@ export interface AminoMsgSubmitProposal extends AminoMsg {
         }[];
         proposer: string;
         metadata: string;
-        title: string;
-        summary: string;
-        expedited: boolean;
     };
 }
 export interface AminoMsgExecLegacyContent extends AminoMsg {
@@ -60,56 +57,11 @@ export interface AminoMsgDeposit extends AminoMsg {
         }[];
     };
 }
-export interface AminoMsgUpdateParams extends AminoMsg {
-    type: "cosmos-sdk/x/gov/v1/MsgUpdateParams";
-    value: {
-        authority: string;
-        params: {
-            min_deposit: {
-                denom: string;
-                amount: string;
-            }[];
-            max_deposit_period: {
-                seconds: string;
-                nanos: number;
-            };
-            voting_period: {
-                seconds: string;
-                nanos: number;
-            };
-            quorum: string;
-            threshold: string;
-            veto_threshold: string;
-            min_initial_deposit_ratio: string;
-            proposal_cancel_ratio: string;
-            proposal_cancel_dest: string;
-            expedited_voting_period: {
-                seconds: string;
-                nanos: number;
-            };
-            expedited_threshold: string;
-            expedited_min_deposit: {
-                denom: string;
-                amount: string;
-            }[];
-            burn_vote_quorum: boolean;
-            burn_proposal_deposit_prevote: boolean;
-            burn_vote_veto: boolean;
-        };
-    };
-}
-export interface AminoMsgCancelProposal extends AminoMsg {
-    type: "cosmos-sdk/v1/MsgCancelProposal";
-    value: {
-        proposal_id: string;
-        proposer: string;
-    };
-}
 export declare const AminoConverter: {
     "/cosmos.gov.v1.MsgSubmitProposal": {
         aminoType: string;
-        toAmino: ({ messages, initialDeposit, proposer, metadata, title, summary, expedited }: MsgSubmitProposal) => AminoMsgSubmitProposal["value"];
-        fromAmino: ({ messages, initial_deposit, proposer, metadata, title, summary, expedited }: AminoMsgSubmitProposal["value"]) => MsgSubmitProposal;
+        toAmino: ({ messages, initialDeposit, proposer, metadata }: MsgSubmitProposal) => AminoMsgSubmitProposal["value"];
+        fromAmino: ({ messages, initial_deposit, proposer, metadata }: AminoMsgSubmitProposal["value"]) => MsgSubmitProposal;
     };
     "/cosmos.gov.v1.MsgExecLegacyContent": {
         aminoType: string;
@@ -130,15 +82,5 @@ export declare const AminoConverter: {
         aminoType: string;
         toAmino: ({ proposalId, depositor, amount }: MsgDeposit) => AminoMsgDeposit["value"];
         fromAmino: ({ proposal_id, depositor, amount }: AminoMsgDeposit["value"]) => MsgDeposit;
-    };
-    "/cosmos.gov.v1.MsgUpdateParams": {
-        aminoType: string;
-        toAmino: ({ authority, params }: MsgUpdateParams) => AminoMsgUpdateParams["value"];
-        fromAmino: ({ authority, params }: AminoMsgUpdateParams["value"]) => MsgUpdateParams;
-    };
-    "/cosmos.gov.v1.MsgCancelProposal": {
-        aminoType: string;
-        toAmino: ({ proposalId, proposer }: MsgCancelProposal) => AminoMsgCancelProposal["value"];
-        fromAmino: ({ proposal_id, proposer }: AminoMsgCancelProposal["value"]) => MsgCancelProposal;
     };
 };

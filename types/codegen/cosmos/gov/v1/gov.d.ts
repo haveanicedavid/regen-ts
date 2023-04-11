@@ -100,16 +100,12 @@ export declare function proposalStatusFromJSON(object: any): ProposalStatus;
 export declare function proposalStatusToJSON(object: ProposalStatus): string;
 /** WeightedVoteOption defines a unit of vote for vote split. */
 export interface WeightedVoteOption {
-    /** option defines the valid vote options, it must not contain duplicate vote options. */
     option: VoteOption;
-    /** weight is the vote weight associated with the vote option. */
     weight: string;
 }
 /** WeightedVoteOption defines a unit of vote for vote split. */
 export interface WeightedVoteOptionSDKType {
-    /** option defines the valid vote options, it must not contain duplicate vote options. */
     option: VoteOptionSDKType;
-    /** weight is the vote weight associated with the vote option. */
     weight: string;
 }
 /**
@@ -117,11 +113,8 @@ export interface WeightedVoteOptionSDKType {
  * proposal.
  */
 export interface Deposit {
-    /** proposal_id defines the unique id of the proposal. */
     proposalId: Long;
-    /** depositor defines the deposit addresses from the proposals. */
     depositor: string;
-    /** amount to be deposited by depositor. */
     amount: Coin[];
 }
 /**
@@ -129,20 +122,14 @@ export interface Deposit {
  * proposal.
  */
 export interface DepositSDKType {
-    /** proposal_id defines the unique id of the proposal. */
     proposal_id: Long;
-    /** depositor defines the deposit addresses from the proposals. */
     depositor: string;
-    /** amount to be deposited by depositor. */
     amount: CoinSDKType[];
 }
 /** Proposal defines the core field members of a governance proposal. */
 export interface Proposal {
-    /** id defines the unique id of the proposal. */
     id: Long;
-    /** messages are the arbitrary messages to be executed if the proposal passes. */
     messages: Any[];
-    /** status defines the proposal status. */
     status: ProposalStatus;
     /**
      * final_tally_result is the final tally result of the proposal. When
@@ -150,50 +137,18 @@ export interface Proposal {
      * proposal's voting period has ended.
      */
     finalTallyResult?: TallyResult;
-    /** submit_time is the time of proposal submission. */
     submitTime?: Timestamp;
-    /** deposit_end_time is the end time for deposition. */
     depositEndTime?: Timestamp;
-    /** total_deposit is the total deposit on the proposal. */
     totalDeposit: Coin[];
-    /** voting_start_time is the starting time to vote on a proposal. */
     votingStartTime?: Timestamp;
-    /** voting_end_time is the end time of voting on a proposal. */
     votingEndTime?: Timestamp;
     /** metadata is any arbitrary metadata attached to the proposal. */
     metadata: string;
-    /**
-     * title is the title of the proposal
-     *
-     * Since: cosmos-sdk 0.47
-     */
-    title: string;
-    /**
-     * summary is a short summary of the proposal
-     *
-     * Since: cosmos-sdk 0.47
-     */
-    summary: string;
-    /**
-     * proposer is the address of the proposal sumbitter
-     *
-     * Since: cosmos-sdk 0.47
-     */
-    proposer: string;
-    /**
-     * expedited defines if the proposal is expedited
-     *
-     * Since: cosmos-sdk 0.48
-     */
-    expedited: boolean;
 }
 /** Proposal defines the core field members of a governance proposal. */
 export interface ProposalSDKType {
-    /** id defines the unique id of the proposal. */
     id: Long;
-    /** messages are the arbitrary messages to be executed if the proposal passes. */
     messages: AnySDKType[];
-    /** status defines the proposal status. */
     status: ProposalStatusSDKType;
     /**
      * final_tally_result is the final tally result of the proposal. When
@@ -201,63 +156,26 @@ export interface ProposalSDKType {
      * proposal's voting period has ended.
      */
     final_tally_result?: TallyResultSDKType;
-    /** submit_time is the time of proposal submission. */
     submit_time?: TimestampSDKType;
-    /** deposit_end_time is the end time for deposition. */
     deposit_end_time?: TimestampSDKType;
-    /** total_deposit is the total deposit on the proposal. */
     total_deposit: CoinSDKType[];
-    /** voting_start_time is the starting time to vote on a proposal. */
     voting_start_time?: TimestampSDKType;
-    /** voting_end_time is the end time of voting on a proposal. */
     voting_end_time?: TimestampSDKType;
     /** metadata is any arbitrary metadata attached to the proposal. */
     metadata: string;
-    /**
-     * title is the title of the proposal
-     *
-     * Since: cosmos-sdk 0.47
-     */
-    title: string;
-    /**
-     * summary is a short summary of the proposal
-     *
-     * Since: cosmos-sdk 0.47
-     */
-    summary: string;
-    /**
-     * proposer is the address of the proposal sumbitter
-     *
-     * Since: cosmos-sdk 0.47
-     */
-    proposer: string;
-    /**
-     * expedited defines if the proposal is expedited
-     *
-     * Since: cosmos-sdk 0.48
-     */
-    expedited: boolean;
 }
 /** TallyResult defines a standard tally for a governance proposal. */
 export interface TallyResult {
-    /** yes_count is the number of yes votes on a proposal. */
     yesCount: string;
-    /** abstain_count is the number of abstain votes on a proposal. */
     abstainCount: string;
-    /** no_count is the number of no votes on a proposal. */
     noCount: string;
-    /** no_with_veto_count is the number of no with veto votes on a proposal. */
     noWithVetoCount: string;
 }
 /** TallyResult defines a standard tally for a governance proposal. */
 export interface TallyResultSDKType {
-    /** yes_count is the number of yes votes on a proposal. */
     yes_count: string;
-    /** abstain_count is the number of abstain votes on a proposal. */
     abstain_count: string;
-    /** no_count is the number of no votes on a proposal. */
     no_count: string;
-    /** no_with_veto_count is the number of no with veto votes on a proposal. */
     no_with_veto_count: string;
 }
 /**
@@ -265,11 +183,8 @@ export interface TallyResultSDKType {
  * A Vote consists of a proposal ID, the voter, and the vote option.
  */
 export interface Vote {
-    /** proposal_id defines the unique id of the proposal. */
     proposalId: Long;
-    /** voter is the voter address of the proposal. */
     voter: string;
-    /** options is the weighted vote options. */
     options: WeightedVoteOption[];
     /** metadata is any  arbitrary metadata to attached to the vote. */
     metadata: string;
@@ -279,161 +194,61 @@ export interface Vote {
  * A Vote consists of a proposal ID, the voter, and the vote option.
  */
 export interface VoteSDKType {
-    /** proposal_id defines the unique id of the proposal. */
     proposal_id: Long;
-    /** voter is the voter address of the proposal. */
     voter: string;
-    /** options is the weighted vote options. */
     options: WeightedVoteOptionSDKType[];
     /** metadata is any  arbitrary metadata to attached to the vote. */
     metadata: string;
 }
 /** DepositParams defines the params for deposits on governance proposals. */
-/** @deprecated */
 export interface DepositParams {
     /** Minimum deposit for a proposal to enter voting period. */
     minDeposit: Coin[];
     /**
      * Maximum period for Atom holders to deposit on a proposal. Initial value: 2
-     * months.
+     *  months.
      */
     maxDepositPeriod?: Duration;
 }
 /** DepositParams defines the params for deposits on governance proposals. */
-/** @deprecated */
 export interface DepositParamsSDKType {
     /** Minimum deposit for a proposal to enter voting period. */
     min_deposit: CoinSDKType[];
     /**
      * Maximum period for Atom holders to deposit on a proposal. Initial value: 2
-     * months.
+     *  months.
      */
     max_deposit_period?: DurationSDKType;
 }
 /** VotingParams defines the params for voting on governance proposals. */
-/** @deprecated */
 export interface VotingParams {
-    /** Duration of the voting period. */
+    /** Length of the voting period. */
     votingPeriod?: Duration;
 }
 /** VotingParams defines the params for voting on governance proposals. */
-/** @deprecated */
 export interface VotingParamsSDKType {
-    /** Duration of the voting period. */
+    /** Length of the voting period. */
     voting_period?: DurationSDKType;
 }
 /** TallyParams defines the params for tallying votes on governance proposals. */
-/** @deprecated */
 export interface TallyParams {
     /**
      * Minimum percentage of total stake needed to vote for a result to be
-     * considered valid.
+     *  considered valid.
      */
     quorum: string;
     /** Minimum proportion of Yes votes for proposal to pass. Default value: 0.5. */
     threshold: string;
     /**
      * Minimum value of Veto votes to Total votes ratio for proposal to be
-     * vetoed. Default value: 1/3.
+     *  vetoed. Default value: 1/3.
      */
     vetoThreshold: string;
 }
 /** TallyParams defines the params for tallying votes on governance proposals. */
-/** @deprecated */
 export interface TallyParamsSDKType {
     /**
      * Minimum percentage of total stake needed to vote for a result to be
-     * considered valid.
-     */
-    quorum: string;
-    /** Minimum proportion of Yes votes for proposal to pass. Default value: 0.5. */
-    threshold: string;
-    /**
-     * Minimum value of Veto votes to Total votes ratio for proposal to be
-     * vetoed. Default value: 1/3.
-     */
-    veto_threshold: string;
-}
-/**
- * Params defines the parameters for the x/gov module.
- *
- * Since: cosmos-sdk 0.47
- */
-export interface Params {
-    /** Minimum deposit for a proposal to enter voting period. */
-    minDeposit: Coin[];
-    /**
-     * Maximum period for Atom holders to deposit on a proposal. Initial value: 2
-     * months.
-     */
-    maxDepositPeriod?: Duration;
-    /** Duration of the voting period. */
-    votingPeriod?: Duration;
-    /**
-     * Minimum percentage of total stake needed to vote for a result to be
-     *  considered valid.
-     */
-    quorum: string;
-    /** Minimum proportion of Yes votes for proposal to pass. Default value: 0.5. */
-    threshold: string;
-    /**
-     * Minimum value of Veto votes to Total votes ratio for proposal to be
-     *  vetoed. Default value: 1/3.
-     */
-    vetoThreshold: string;
-    /** The ratio representing the proportion of the deposit value that must be paid at proposal submission. */
-    minInitialDepositRatio: string;
-    /**
-     * The cancel ratio which will not be returned back to the depositors when a proposal is cancelled.
-     *
-     * Since: cosmos-sdk 0.48
-     */
-    proposalCancelRatio: string;
-    /**
-     * The address which will receive (proposal_cancel_ratio * deposit) proposal deposits.
-     * If empty, the (proposal_cancel_ratio * deposit) proposal deposits will be burned.
-     *
-     * Since: cosmos-sdk 0.48
-     */
-    proposalCancelDest: string;
-    /**
-     * Duration of the voting period of an expedited proposal.
-     *
-     * Since: cosmos-sdk 0.48
-     */
-    expeditedVotingPeriod?: Duration;
-    /**
-     * Minimum proportion of Yes votes for proposal to pass. Default value: 0.67.
-     *
-     * Since: cosmos-sdk 0.48
-     */
-    expeditedThreshold: string;
-    /** Minimum expedited deposit for a proposal to enter voting period. */
-    expeditedMinDeposit: Coin[];
-    /** burn deposits if a proposal does not meet quorum */
-    burnVoteQuorum: boolean;
-    /** burn deposits if the proposal does not enter voting period */
-    burnProposalDepositPrevote: boolean;
-    /** burn deposits if quorum with vote type no_veto is met */
-    burnVoteVeto: boolean;
-}
-/**
- * Params defines the parameters for the x/gov module.
- *
- * Since: cosmos-sdk 0.47
- */
-export interface ParamsSDKType {
-    /** Minimum deposit for a proposal to enter voting period. */
-    min_deposit: CoinSDKType[];
-    /**
-     * Maximum period for Atom holders to deposit on a proposal. Initial value: 2
-     * months.
-     */
-    max_deposit_period?: DurationSDKType;
-    /** Duration of the voting period. */
-    voting_period?: DurationSDKType;
-    /**
-     * Minimum percentage of total stake needed to vote for a result to be
      *  considered valid.
      */
     quorum: string;
@@ -444,41 +259,6 @@ export interface ParamsSDKType {
      *  vetoed. Default value: 1/3.
      */
     veto_threshold: string;
-    /** The ratio representing the proportion of the deposit value that must be paid at proposal submission. */
-    min_initial_deposit_ratio: string;
-    /**
-     * The cancel ratio which will not be returned back to the depositors when a proposal is cancelled.
-     *
-     * Since: cosmos-sdk 0.48
-     */
-    proposal_cancel_ratio: string;
-    /**
-     * The address which will receive (proposal_cancel_ratio * deposit) proposal deposits.
-     * If empty, the (proposal_cancel_ratio * deposit) proposal deposits will be burned.
-     *
-     * Since: cosmos-sdk 0.48
-     */
-    proposal_cancel_dest: string;
-    /**
-     * Duration of the voting period of an expedited proposal.
-     *
-     * Since: cosmos-sdk 0.48
-     */
-    expedited_voting_period?: DurationSDKType;
-    /**
-     * Minimum proportion of Yes votes for proposal to pass. Default value: 0.67.
-     *
-     * Since: cosmos-sdk 0.48
-     */
-    expedited_threshold: string;
-    /** Minimum expedited deposit for a proposal to enter voting period. */
-    expedited_min_deposit: CoinSDKType[];
-    /** burn deposits if a proposal does not meet quorum */
-    burn_vote_quorum: boolean;
-    /** burn deposits if the proposal does not enter voting period */
-    burn_proposal_deposit_prevote: boolean;
-    /** burn deposits if quorum with vote type no_veto is met */
-    burn_vote_veto: boolean;
 }
 export declare const WeightedVoteOption: {
     encode(message: WeightedVoteOption, writer?: _m0.Writer): _m0.Writer;
@@ -535,11 +315,4 @@ export declare const TallyParams: {
     fromJSON(object: any): TallyParams;
     toJSON(message: TallyParams): unknown;
     fromPartial(object: Partial<TallyParams>): TallyParams;
-};
-export declare const Params: {
-    encode(message: Params, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): Params;
-    fromJSON(object: any): Params;
-    toJSON(message: Params): unknown;
-    fromPartial(object: Partial<Params>): Params;
 };

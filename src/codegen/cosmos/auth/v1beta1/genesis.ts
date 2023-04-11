@@ -5,7 +5,7 @@ import { isSet } from "../../../helpers";
 /** GenesisState defines the auth module's genesis state. */
 
 export interface GenesisState {
-  /** params defines all the parameters of the module. */
+  /** params defines all the paramaters of the module. */
   params?: Params;
   /** accounts are the accounts present at genesis. */
 
@@ -14,7 +14,7 @@ export interface GenesisState {
 /** GenesisState defines the auth module's genesis state. */
 
 export interface GenesisStateSDKType {
-  /** params defines all the parameters of the module. */
+  /** params defines all the paramaters of the module. */
   params?: ParamsSDKType;
   /** accounts are the accounts present at genesis. */
 

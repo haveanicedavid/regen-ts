@@ -180,7 +180,7 @@ export interface MemberRequestSDKType {
 /**
  * ThresholdDecisionPolicy is a decision policy where a proposal passes when it
  * satisfies the two following conditions:
- * 1. The sum of all `YES` voter's weights is greater or equal than the defined
+ * 1. The sum of all `YES` voters' weights is greater or equal than the defined
  *    `threshold`.
  * 2. The voting and execution periods of the proposal respect the parameters
  *    given by `windows`.
@@ -197,7 +197,7 @@ export interface ThresholdDecisionPolicy {
 /**
  * ThresholdDecisionPolicy is a decision policy where a proposal passes when it
  * satisfies the two following conditions:
- * 1. The sum of all `YES` voter's weights is greater or equal than the defined
+ * 1. The sum of all `YES` voters' weights is greater or equal than the defined
  *    `threshold`.
  * 2. The voting and execution periods of the proposal respect the parameters
  *    given by `windows`.
@@ -221,7 +221,7 @@ export interface ThresholdDecisionPolicySDKType {
  */
 export interface PercentageDecisionPolicy {
     /**
-     * percentage is the minimum percentage of the weighted sum of `YES` votes must
+     * percentage is the minimum percentage the weighted sum of `YES` votes must
      * meet for a proposal to succeed.
      */
     percentage: string;
@@ -238,7 +238,7 @@ export interface PercentageDecisionPolicy {
  */
 export interface PercentageDecisionPolicySDKType {
     /**
-     * percentage is the minimum percentage of the weighted sum of `YES` votes must
+     * percentage is the minimum percentage the weighted sum of `YES` votes must
      * meet for a proposal to succeed.
      */
     percentage: string;
@@ -351,7 +351,7 @@ export interface GroupPolicyInfo {
     groupId: Long;
     /** admin is the account address of the group admin. */
     admin: string;
-    /** metadata is any arbitrary metadata attached to the group policy. */
+    /** metadata is any arbitrary metadata to attached to the group policy. */
     metadata: string;
     /**
      * version is used to track changes to a group's GroupPolicyInfo structure that
@@ -371,7 +371,7 @@ export interface GroupPolicyInfoSDKType {
     group_id: Long;
     /** admin is the account address of the group admin. */
     admin: string;
-    /** metadata is any arbitrary metadata attached to the group policy. */
+    /** metadata is any arbitrary metadata to attached to the group policy. */
     metadata: string;
     /**
      * version is used to track changes to a group's GroupPolicyInfo structure that
@@ -394,7 +394,7 @@ export interface Proposal {
     id: Long;
     /** group_policy_address is the account address of group policy. */
     groupPolicyAddress: string;
-    /** metadata is any arbitrary metadata attached to the proposal. */
+    /** metadata is any arbitrary metadata to attached to the proposal. */
     metadata: string;
     /** proposers are the account addresses of the proposers. */
     proposers: string[];
@@ -423,7 +423,7 @@ export interface Proposal {
     finalTallyResult?: TallyResult;
     /**
      * voting_period_end is the timestamp before which voting must be done.
-     * Unless a successful MsgExec is called before (to execute a proposal whose
+     * Unless a successfull MsgExec is called before (to execute a proposal whose
      * tally is successful before the voting period ends), tallying will be done
      * at this point, and the `final_tally_result`and `status` fields will be
      * accordingly updated.
@@ -433,18 +433,6 @@ export interface Proposal {
     executorResult: ProposalExecutorResult;
     /** messages is a list of `sdk.Msg`s that will be executed if the proposal passes. */
     messages: Any[];
-    /**
-     * title is the title of the proposal
-     *
-     * Since: cosmos-sdk 0.47
-     */
-    title: string;
-    /**
-     * summary is a short summary of the proposal
-     *
-     * Since: cosmos-sdk 0.47
-     */
-    summary: string;
 }
 /**
  * Proposal defines a group proposal. Any member of a group can submit a proposal
@@ -457,7 +445,7 @@ export interface ProposalSDKType {
     id: Long;
     /** group_policy_address is the account address of group policy. */
     group_policy_address: string;
-    /** metadata is any arbitrary metadata attached to the proposal. */
+    /** metadata is any arbitrary metadata to attached to the proposal. */
     metadata: string;
     /** proposers are the account addresses of the proposers. */
     proposers: string[];
@@ -486,7 +474,7 @@ export interface ProposalSDKType {
     final_tally_result?: TallyResultSDKType;
     /**
      * voting_period_end is the timestamp before which voting must be done.
-     * Unless a successful MsgExec is called before (to execute a proposal whose
+     * Unless a successfull MsgExec is called before (to execute a proposal whose
      * tally is successful before the voting period ends), tallying will be done
      * at this point, and the `final_tally_result`and `status` fields will be
      * accordingly updated.
@@ -496,18 +484,6 @@ export interface ProposalSDKType {
     executor_result: ProposalExecutorResultSDKType;
     /** messages is a list of `sdk.Msg`s that will be executed if the proposal passes. */
     messages: AnySDKType[];
-    /**
-     * title is the title of the proposal
-     *
-     * Since: cosmos-sdk 0.47
-     */
-    title: string;
-    /**
-     * summary is a short summary of the proposal
-     *
-     * Since: cosmos-sdk 0.47
-     */
-    summary: string;
 }
 /** TallyResult represents the sum of weighted votes for each vote option. */
 export interface TallyResult {
@@ -539,7 +515,7 @@ export interface Vote {
     voter: string;
     /** option is the voter's choice on the proposal. */
     option: VoteOption;
-    /** metadata is any arbitrary metadata attached to the vote. */
+    /** metadata is any arbitrary metadata to attached to the vote. */
     metadata: string;
     /** submit_time is the timestamp when the vote was submitted. */
     submitTime?: Timestamp;
@@ -552,7 +528,7 @@ export interface VoteSDKType {
     voter: string;
     /** option is the voter's choice on the proposal. */
     option: VoteOptionSDKType;
-    /** metadata is any arbitrary metadata attached to the vote. */
+    /** metadata is any arbitrary metadata to attached to the vote. */
     metadata: string;
     /** submit_time is the timestamp when the vote was submitted. */
     submit_time?: TimestampSDKType;

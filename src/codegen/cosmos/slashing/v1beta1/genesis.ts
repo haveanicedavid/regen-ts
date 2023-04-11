@@ -4,7 +4,7 @@ import { isSet, Long } from "../../../helpers";
 /** GenesisState defines the slashing module's genesis state. */
 
 export interface GenesisState {
-  /** params defines all the parameters of the module. */
+  /** params defines all the paramaters of related to deposit. */
   params?: Params;
   /**
    * signing_infos represents a map between validator addresses and their
@@ -22,7 +22,7 @@ export interface GenesisState {
 /** GenesisState defines the slashing module's genesis state. */
 
 export interface GenesisStateSDKType {
-  /** params defines all the parameters of the module. */
+  /** params defines all the paramaters of related to deposit. */
   params?: ParamsSDKType;
   /**
    * signing_infos represents a map between validator addresses and their

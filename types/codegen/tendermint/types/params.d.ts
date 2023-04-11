@@ -33,6 +33,13 @@ export interface BlockParams {
      * Note: must be greater or equal to -1
      */
     maxGas: Long;
+    /**
+     * Minimum time increment between consecutive blocks (in milliseconds) If the
+     * block header timestamp is ahead of the system clock, decrease this value.
+     *
+     * Not exposed to the application.
+     */
+    timeIotaMs: Long;
 }
 /** BlockParams contains limits on the block size. */
 export interface BlockParamsSDKType {
@@ -46,6 +53,13 @@ export interface BlockParamsSDKType {
      * Note: must be greater or equal to -1
      */
     max_gas: Long;
+    /**
+     * Minimum time increment between consecutive blocks (in milliseconds) If the
+     * block header timestamp is ahead of the system clock, decrease this value.
+     *
+     * Not exposed to the application.
+     */
+    time_iota_ms: Long;
 }
 /** EvidenceParams determine how we handle evidence of malfeasance. */
 export interface EvidenceParams {
@@ -111,11 +125,11 @@ export interface ValidatorParamsSDKType {
 }
 /** VersionParams contains the ABCI application version. */
 export interface VersionParams {
-    app: Long;
+    appVersion: Long;
 }
 /** VersionParams contains the ABCI application version. */
 export interface VersionParamsSDKType {
-    app: Long;
+    app_version: Long;
 }
 /**
  * HashedParams is a subset of ConsensusParams.

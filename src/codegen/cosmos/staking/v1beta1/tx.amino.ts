@@ -2,7 +2,7 @@
 import { AminoMsg, decodeBech32Pubkey, encodeBech32Pubkey } from "@cosmjs/amino";
 import { fromBase64, toBase64 } from "@cosmjs/encoding";
 import { Long } from "../../../helpers";
-import { MsgCreateValidator, MsgEditValidator, MsgDelegate, MsgBeginRedelegate, MsgUndelegate, MsgCancelUnbondingDelegation, MsgUpdateParams } from "./tx";
+import { MsgCreateValidator, MsgEditValidator, MsgDelegate, MsgBeginRedelegate, MsgUndelegate, MsgCancelUnbondingDelegation } from "./tx";
 export interface AminoMsgCreateValidator extends AminoMsg {
   type: "cosmos-sdk/MsgCreateValidator";
   value: {
@@ -90,23 +90,6 @@ export interface AminoMsgCancelUnbondingDelegation extends AminoMsg {
       amount: string;
     };
     creation_height: string;
-  };
-}
-export interface AminoMsgUpdateParams extends AminoMsg {
-  type: "cosmos-sdk/x/staking/MsgUpdateParams";
-  value: {
-    authority: string;
-    params: {
-      unbonding_time: {
-        seconds: string;
-        nanos: number;
-      };
-      max_validators: number;
-      max_entries: number;
-      historical_entries: number;
-      bond_denom: string;
-      min_commission_rate: string;
-    };
   };
 }
 export const AminoConverter = {
@@ -353,44 +336,6 @@ export const AminoConverter = {
           amount: amount.amount
         },
         creationHeight: Long.fromString(creation_height)
-      };
-    }
-  },
-  "/cosmos.staking.v1beta1.MsgUpdateParams": {
-    aminoType: "cosmos-sdk/x/staking/MsgUpdateParams",
-    toAmino: ({
-      authority,
-      params
-    }: MsgUpdateParams): AminoMsgUpdateParams["value"] => {
-      return {
-        authority,
-        params: {
-          unbonding_time: (params.unbondingTime * 1_000_000_000).toString(),
-          max_validators: params.maxValidators,
-          max_entries: params.maxEntries,
-          historical_entries: params.historicalEntries,
-          bond_denom: params.bondDenom,
-          min_commission_rate: params.minCommissionRate
-        }
-      };
-    },
-    fromAmino: ({
-      authority,
-      params
-    }: AminoMsgUpdateParams["value"]): MsgUpdateParams => {
-      return {
-        authority,
-        params: {
-          unbondingTime: {
-            seconds: Long.fromNumber(Math.floor(parseInt(params.unbonding_time) / 1_000_000_000)),
-            nanos: parseInt(params.unbonding_time) % 1_000_000_000
-          },
-          maxValidators: params.max_validators,
-          maxEntries: params.max_entries,
-          historicalEntries: params.historical_entries,
-          bondDenom: params.bond_denom,
-          minCommissionRate: params.min_commission_rate
-        }
       };
     }
   }

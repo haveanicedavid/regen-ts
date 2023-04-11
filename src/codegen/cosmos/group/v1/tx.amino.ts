@@ -110,8 +110,6 @@ export interface AminoMsgSubmitProposal extends AminoMsg {
       value: Uint8Array;
     }[];
     exec: number;
-    title: string;
-    summary: string;
   };
 }
 export interface AminoMsgWithdrawProposal extends AminoMsg {
@@ -436,9 +434,7 @@ export const AminoConverter = {
       proposers,
       metadata,
       messages,
-      exec,
-      title,
-      summary
+      exec
     }: MsgSubmitProposal): AminoMsgSubmitProposal["value"] => {
       return {
         group_policy_address: groupPolicyAddress,
@@ -448,9 +444,7 @@ export const AminoConverter = {
           type_url: el0.typeUrl,
           value: el0.value
         })),
-        exec,
-        title,
-        summary
+        exec
       };
     },
     fromAmino: ({
@@ -458,9 +452,7 @@ export const AminoConverter = {
       proposers,
       metadata,
       messages,
-      exec,
-      title,
-      summary
+      exec
     }: AminoMsgSubmitProposal["value"]): MsgSubmitProposal => {
       return {
         groupPolicyAddress: group_policy_address,
@@ -470,9 +462,7 @@ export const AminoConverter = {
           typeUrl: el0.type_url,
           value: el0.value
         })),
-        exec: execFromJSON(exec),
-        title,
-        summary
+        exec: execFromJSON(exec)
       };
     }
   },

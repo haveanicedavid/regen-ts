@@ -19,9 +19,6 @@ export enum AuthorizationType {
 
   /** AUTHORIZATION_TYPE_REDELEGATE - AUTHORIZATION_TYPE_REDELEGATE defines an authorization type for Msg/BeginRedelegate */
   AUTHORIZATION_TYPE_REDELEGATE = 3,
-
-  /** AUTHORIZATION_TYPE_CANCEL_UNBONDING_DELEGATION - AUTHORIZATION_TYPE_CANCEL_UNBONDING_DELEGATION defines an authorization type for Msg/MsgCancelUnbondingDelegation */
-  AUTHORIZATION_TYPE_CANCEL_UNBONDING_DELEGATION = 4,
   UNRECOGNIZED = -1,
 }
 /**
@@ -42,9 +39,6 @@ export enum AuthorizationTypeSDKType {
 
   /** AUTHORIZATION_TYPE_REDELEGATE - AUTHORIZATION_TYPE_REDELEGATE defines an authorization type for Msg/BeginRedelegate */
   AUTHORIZATION_TYPE_REDELEGATE = 3,
-
-  /** AUTHORIZATION_TYPE_CANCEL_UNBONDING_DELEGATION - AUTHORIZATION_TYPE_CANCEL_UNBONDING_DELEGATION defines an authorization type for Msg/MsgCancelUnbondingDelegation */
-  AUTHORIZATION_TYPE_CANCEL_UNBONDING_DELEGATION = 4,
   UNRECOGNIZED = -1,
 }
 export function authorizationTypeFromJSON(object: any): AuthorizationType {
@@ -65,10 +59,6 @@ export function authorizationTypeFromJSON(object: any): AuthorizationType {
     case "AUTHORIZATION_TYPE_REDELEGATE":
       return AuthorizationType.AUTHORIZATION_TYPE_REDELEGATE;
 
-    case 4:
-    case "AUTHORIZATION_TYPE_CANCEL_UNBONDING_DELEGATION":
-      return AuthorizationType.AUTHORIZATION_TYPE_CANCEL_UNBONDING_DELEGATION;
-
     case -1:
     case "UNRECOGNIZED":
     default:
@@ -88,9 +78,6 @@ export function authorizationTypeToJSON(object: AuthorizationType): string {
 
     case AuthorizationType.AUTHORIZATION_TYPE_REDELEGATE:
       return "AUTHORIZATION_TYPE_REDELEGATE";
-
-    case AuthorizationType.AUTHORIZATION_TYPE_CANCEL_UNBONDING_DELEGATION:
-      return "AUTHORIZATION_TYPE_CANCEL_UNBONDING_DELEGATION";
 
     case AuthorizationType.UNRECOGNIZED:
     default:

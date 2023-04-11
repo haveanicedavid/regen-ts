@@ -6,7 +6,7 @@ import * as _m0 from "protobufjs/minimal";
  * Since: cosmos-sdk 0.46
  */
 export interface MsgSoftwareUpgrade {
-    /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
+    /** authority is the address of the governance account. */
     authority: string;
     /** plan is the upgrade plan. */
     plan?: Plan;
@@ -17,7 +17,7 @@ export interface MsgSoftwareUpgrade {
  * Since: cosmos-sdk 0.46
  */
 export interface MsgSoftwareUpgradeSDKType {
-    /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
+    /** authority is the address of the governance account. */
     authority: string;
     /** plan is the upgrade plan. */
     plan?: PlanSDKType;
@@ -42,7 +42,7 @@ export interface MsgSoftwareUpgradeResponseSDKType {
  * Since: cosmos-sdk 0.46
  */
 export interface MsgCancelUpgrade {
-    /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
+    /** authority is the address of the governance account. */
     authority: string;
 }
 /**
@@ -51,7 +51,7 @@ export interface MsgCancelUpgrade {
  * Since: cosmos-sdk 0.46
  */
 export interface MsgCancelUpgradeSDKType {
-    /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
+    /** authority is the address of the governance account. */
     authority: string;
 }
 /**

@@ -1,6 +1,5 @@
 import { Any, AnySDKType } from "../../../../google/protobuf/any";
 import { Event, EventSDKType } from "../../../../tendermint/abci/types";
-import { Block, BlockSDKType } from "../../../../tendermint/types/block";
 import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../../helpers";
 /**
@@ -303,36 +302,6 @@ export interface SearchTxsResultSDKType {
     /** List of txs in current page */
     txs: TxResponseSDKType[];
 }
-/** SearchBlocksResult defines a structure for querying blocks pageable */
-export interface SearchBlocksResult {
-    /** Count of all blocks */
-    totalCount: Long;
-    /** Count of blocks in current page */
-    count: Long;
-    /** Index of current page, start from 1 */
-    pageNumber: Long;
-    /** Count of total pages */
-    pageTotal: Long;
-    /** Max count blocks per page */
-    limit: Long;
-    /** List of blocks in current page */
-    blocks: Block[];
-}
-/** SearchBlocksResult defines a structure for querying blocks pageable */
-export interface SearchBlocksResultSDKType {
-    /** Count of all blocks */
-    total_count: Long;
-    /** Count of blocks in current page */
-    count: Long;
-    /** Index of current page, start from 1 */
-    page_number: Long;
-    /** Count of total pages */
-    page_total: Long;
-    /** Max count blocks per page */
-    limit: Long;
-    /** List of blocks in current page */
-    blocks: BlockSDKType[];
-}
 export declare const TxResponse: {
     encode(message: TxResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TxResponse;
@@ -402,11 +371,4 @@ export declare const SearchTxsResult: {
     fromJSON(object: any): SearchTxsResult;
     toJSON(message: SearchTxsResult): unknown;
     fromPartial(object: Partial<SearchTxsResult>): SearchTxsResult;
-};
-export declare const SearchBlocksResult: {
-    encode(message: SearchBlocksResult, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): SearchBlocksResult;
-    fromJSON(object: any): SearchBlocksResult;
-    toJSON(message: SearchBlocksResult): unknown;
-    fromPartial(object: Partial<SearchBlocksResult>): SearchBlocksResult;
 };

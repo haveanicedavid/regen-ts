@@ -1,21 +1,7 @@
-import { ProposalStatus, ProposalStatusSDKType, Proposal, ProposalSDKType, Vote, VoteSDKType, VotingParams, VotingParamsSDKType, DepositParams, DepositParamsSDKType, TallyParams, TallyParamsSDKType, Params, ParamsSDKType, Deposit, DepositSDKType, TallyResult, TallyResultSDKType } from "./gov";
+import { ProposalStatus, ProposalStatusSDKType, Proposal, ProposalSDKType, Vote, VoteSDKType, VotingParams, VotingParamsSDKType, DepositParams, DepositParamsSDKType, TallyParams, TallyParamsSDKType, Deposit, DepositSDKType, TallyResult, TallyResultSDKType } from "./gov";
 import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
 import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
-/** QueryConstitutionRequest is the request type for the Query/Constitution RPC method */
-export interface QueryConstitutionRequest {
-}
-/** QueryConstitutionRequest is the request type for the Query/Constitution RPC method */
-export interface QueryConstitutionRequestSDKType {
-}
-/** QueryConstitutionResponse is the response type for the Query/Constitution RPC method */
-export interface QueryConstitutionResponse {
-    constitution: string;
-}
-/** QueryConstitutionResponse is the response type for the Query/Constitution RPC method */
-export interface QueryConstitutionResponseSDKType {
-    constitution: string;
-}
 /** QueryProposalRequest is the request type for the Query/Proposal RPC method. */
 export interface QueryProposalRequest {
     /** proposal_id defines the unique id of the proposal. */
@@ -28,12 +14,10 @@ export interface QueryProposalRequestSDKType {
 }
 /** QueryProposalResponse is the response type for the Query/Proposal RPC method. */
 export interface QueryProposalResponse {
-    /** proposal is the requested governance proposal. */
     proposal?: Proposal;
 }
 /** QueryProposalResponse is the response type for the Query/Proposal RPC method. */
 export interface QueryProposalResponseSDKType {
-    /** proposal is the requested governance proposal. */
     proposal?: ProposalSDKType;
 }
 /** QueryProposalsRequest is the request type for the Query/Proposals RPC method. */
@@ -63,7 +47,6 @@ export interface QueryProposalsRequestSDKType {
  * method.
  */
 export interface QueryProposalsResponse {
-    /** proposals defines all the requested governance proposals. */
     proposals: Proposal[];
     /** pagination defines the pagination in the response. */
     pagination?: PageResponse;
@@ -73,7 +56,6 @@ export interface QueryProposalsResponse {
  * method.
  */
 export interface QueryProposalsResponseSDKType {
-    /** proposals defines all the requested governance proposals. */
     proposals: ProposalSDKType[];
     /** pagination defines the pagination in the response. */
     pagination?: PageResponseSDKType;
@@ -94,12 +76,12 @@ export interface QueryVoteRequestSDKType {
 }
 /** QueryVoteResponse is the response type for the Query/Vote RPC method. */
 export interface QueryVoteResponse {
-    /** vote defines the queried vote. */
+    /** vote defined the queried vote. */
     vote?: Vote;
 }
 /** QueryVoteResponse is the response type for the Query/Vote RPC method. */
 export interface QueryVoteResponseSDKType {
-    /** vote defines the queried vote. */
+    /** vote defined the queried vote. */
     vote?: VoteSDKType;
 }
 /** QueryVotesRequest is the request type for the Query/Votes RPC method. */
@@ -118,14 +100,14 @@ export interface QueryVotesRequestSDKType {
 }
 /** QueryVotesResponse is the response type for the Query/Votes RPC method. */
 export interface QueryVotesResponse {
-    /** votes defines the queried votes. */
+    /** votes defined the queried votes. */
     votes: Vote[];
     /** pagination defines the pagination in the response. */
     pagination?: PageResponse;
 }
 /** QueryVotesResponse is the response type for the Query/Votes RPC method. */
 export interface QueryVotesResponseSDKType {
-    /** votes defines the queried votes. */
+    /** votes defined the queried votes. */
     votes: VoteSDKType[];
     /** pagination defines the pagination in the response. */
     pagination?: PageResponseSDKType;
@@ -148,57 +130,21 @@ export interface QueryParamsRequestSDKType {
 }
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
 export interface QueryParamsResponse {
-    /**
-     * Deprecated: Prefer to use `params` instead.
-     * voting_params defines the parameters related to voting.
-     */
-    /** @deprecated */
+    /** voting_params defines the parameters related to voting. */
     votingParams?: VotingParams;
-    /**
-     * Deprecated: Prefer to use `params` instead.
-     * deposit_params defines the parameters related to deposit.
-     */
-    /** @deprecated */
+    /** deposit_params defines the parameters related to deposit. */
     depositParams?: DepositParams;
-    /**
-     * Deprecated: Prefer to use `params` instead.
-     * tally_params defines the parameters related to tally.
-     */
-    /** @deprecated */
+    /** tally_params defines the parameters related to tally. */
     tallyParams?: TallyParams;
-    /**
-     * params defines all the paramaters of x/gov module.
-     *
-     * Since: cosmos-sdk 0.47
-     */
-    params?: Params;
 }
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
 export interface QueryParamsResponseSDKType {
-    /**
-     * Deprecated: Prefer to use `params` instead.
-     * voting_params defines the parameters related to voting.
-     */
-    /** @deprecated */
+    /** voting_params defines the parameters related to voting. */
     voting_params?: VotingParamsSDKType;
-    /**
-     * Deprecated: Prefer to use `params` instead.
-     * deposit_params defines the parameters related to deposit.
-     */
-    /** @deprecated */
+    /** deposit_params defines the parameters related to deposit. */
     deposit_params?: DepositParamsSDKType;
-    /**
-     * Deprecated: Prefer to use `params` instead.
-     * tally_params defines the parameters related to tally.
-     */
-    /** @deprecated */
+    /** tally_params defines the parameters related to tally. */
     tally_params?: TallyParamsSDKType;
-    /**
-     * params defines all the paramaters of x/gov module.
-     *
-     * Since: cosmos-sdk 0.47
-     */
-    params?: ParamsSDKType;
 }
 /** QueryDepositRequest is the request type for the Query/Deposit RPC method. */
 export interface QueryDepositRequest {
@@ -240,14 +186,12 @@ export interface QueryDepositsRequestSDKType {
 }
 /** QueryDepositsResponse is the response type for the Query/Deposits RPC method. */
 export interface QueryDepositsResponse {
-    /** deposits defines the requested deposits. */
     deposits: Deposit[];
     /** pagination defines the pagination in the response. */
     pagination?: PageResponse;
 }
 /** QueryDepositsResponse is the response type for the Query/Deposits RPC method. */
 export interface QueryDepositsResponseSDKType {
-    /** deposits defines the requested deposits. */
     deposits: DepositSDKType[];
     /** pagination defines the pagination in the response. */
     pagination?: PageResponseSDKType;
@@ -272,20 +216,6 @@ export interface QueryTallyResultResponseSDKType {
     /** tally defines the requested tally. */
     tally?: TallyResultSDKType;
 }
-export declare const QueryConstitutionRequest: {
-    encode(_: QueryConstitutionRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConstitutionRequest;
-    fromJSON(_: any): QueryConstitutionRequest;
-    toJSON(_: QueryConstitutionRequest): unknown;
-    fromPartial(_: Partial<QueryConstitutionRequest>): QueryConstitutionRequest;
-};
-export declare const QueryConstitutionResponse: {
-    encode(message: QueryConstitutionResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConstitutionResponse;
-    fromJSON(object: any): QueryConstitutionResponse;
-    toJSON(message: QueryConstitutionResponse): unknown;
-    fromPartial(object: Partial<QueryConstitutionResponse>): QueryConstitutionResponse;
-};
 export declare const QueryProposalRequest: {
     encode(message: QueryProposalRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryProposalRequest;

@@ -70,7 +70,7 @@ export interface PackageReference {
      *
      * When a new version of a module is released and items are added to existing
      * .proto files, these definitions should contain comments of the form
-     * "Since: Revision N" where N is an integer revision.
+     * "Since Revision N" where N is an integer revision.
      *
      * When the module runtime starts up, it will check the pinned proto
      * image and panic if there are runtime protobuf definitions that are not
@@ -113,7 +113,7 @@ export interface PackageReferenceSDKType {
      *
      * When a new version of a module is released and items are added to existing
      * .proto files, these definitions should contain comments of the form
-     * "Since: Revision N" where N is an integer revision.
+     * "Since Revision N" where N is an integer revision.
      *
      * When the module runtime starts up, it will check the pinned proto
      * image and panic if there are runtime protobuf definitions that are not

@@ -25,10 +25,7 @@ export class LCDQueryClient {
     this.pool = this.pool.bind(this);
     this.params = this.params.bind(this);
   }
-  /* Validators queries all validators that match the given status.
-  
-   When called from another module, this query might consume a high amount of
-   gas if the pagination field is incorrectly set. */
+  /* Validators queries all validators that match the given status. */
 
 
   async validators(params: QueryValidatorsRequest): Promise<QueryValidatorsResponseSDKType> {
@@ -54,10 +51,7 @@ export class LCDQueryClient {
     const endpoint = `cosmos/staking/v1beta1/validators/${params.validatorAddr}`;
     return await this.req.get<QueryValidatorResponseSDKType>(endpoint);
   }
-  /* ValidatorDelegations queries delegate info for given validator.
-  
-   When called from another module, this query might consume a high amount of
-   gas if the pagination field is incorrectly set. */
+  /* ValidatorDelegations queries delegate info for given validator. */
 
 
   async validatorDelegations(params: QueryValidatorDelegationsRequest): Promise<QueryValidatorDelegationsResponseSDKType> {
@@ -72,10 +66,7 @@ export class LCDQueryClient {
     const endpoint = `cosmos/staking/v1beta1/validators/${params.validatorAddr}/delegations`;
     return await this.req.get<QueryValidatorDelegationsResponseSDKType>(endpoint, options);
   }
-  /* ValidatorUnbondingDelegations queries unbonding delegations of a validator.
-  
-   When called from another module, this query might consume a high amount of
-   gas if the pagination field is incorrectly set. */
+  /* ValidatorUnbondingDelegations queries unbonding delegations of a validator. */
 
 
   async validatorUnbondingDelegations(params: QueryValidatorUnbondingDelegationsRequest): Promise<QueryValidatorUnbondingDelegationsResponseSDKType> {
@@ -105,10 +96,7 @@ export class LCDQueryClient {
     const endpoint = `cosmos/staking/v1beta1/validators/${params.validatorAddr}/delegations/${params.delegatorAddr}/unbonding_delegation`;
     return await this.req.get<QueryUnbondingDelegationResponseSDKType>(endpoint);
   }
-  /* DelegatorDelegations queries all delegations of a given delegator address.
-  
-   When called from another module, this query might consume a high amount of
-   gas if the pagination field is incorrectly set. */
+  /* DelegatorDelegations queries all delegations of a given delegator address. */
 
 
   async delegatorDelegations(params: QueryDelegatorDelegationsRequest): Promise<QueryDelegatorDelegationsResponseSDKType> {
@@ -124,10 +112,7 @@ export class LCDQueryClient {
     return await this.req.get<QueryDelegatorDelegationsResponseSDKType>(endpoint, options);
   }
   /* DelegatorUnbondingDelegations queries all unbonding delegations of a given
-   delegator address.
-  
-   When called from another module, this query might consume a high amount of
-   gas if the pagination field is incorrectly set. */
+   delegator address. */
 
 
   async delegatorUnbondingDelegations(params: QueryDelegatorUnbondingDelegationsRequest): Promise<QueryDelegatorUnbondingDelegationsResponseSDKType> {
@@ -142,10 +127,7 @@ export class LCDQueryClient {
     const endpoint = `cosmos/staking/v1beta1/delegators/${params.delegatorAddr}/unbonding_delegations`;
     return await this.req.get<QueryDelegatorUnbondingDelegationsResponseSDKType>(endpoint, options);
   }
-  /* Redelegations queries redelegations of given address.
-  
-   When called from another module, this query might consume a high amount of
-   gas if the pagination field is incorrectly set. */
+  /* Redelegations queries redelegations of given address. */
 
 
   async redelegations(params: QueryRedelegationsRequest): Promise<QueryRedelegationsResponseSDKType> {
@@ -169,10 +151,7 @@ export class LCDQueryClient {
     return await this.req.get<QueryRedelegationsResponseSDKType>(endpoint, options);
   }
   /* DelegatorValidators queries all validators info for given delegator
-   address.
-  
-   When called from another module, this query might consume a high amount of
-   gas if the pagination field is incorrectly set. */
+   address. */
 
 
   async delegatorValidators(params: QueryDelegatorValidatorsRequest): Promise<QueryDelegatorValidatorsResponseSDKType> {

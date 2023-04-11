@@ -196,6 +196,8 @@ export interface FlagOptions {
     usage: string;
     /** default_value is the default value as text. */
     defaultValue: string;
+    /** default value is the default value as text if the flag is used without any value. */
+    noOptDefaultValue: string;
     /** deprecated is the usage text to show if this flag is deprecated. */
     deprecated: string;
     /** shorthand_deprecated is the usage text to show if the shorthand of this flag is deprecated. */
@@ -218,6 +220,8 @@ export interface FlagOptionsSDKType {
     usage: string;
     /** default_value is the default value as text. */
     default_value: string;
+    /** default value is the default value as text if the flag is used without any value. */
+    no_opt_default_value: string;
     /** deprecated is the usage text to show if this flag is deprecated. */
     deprecated: string;
     /** shorthand_deprecated is the usage text to show if the shorthand of this flag is deprecated. */

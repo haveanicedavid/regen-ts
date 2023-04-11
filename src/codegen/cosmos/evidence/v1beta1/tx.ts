@@ -7,10 +7,7 @@ import { isSet, bytesFromBase64, base64FromBytes } from "../../../helpers";
  */
 
 export interface MsgSubmitEvidence {
-  /** submitter is the signer account address of evidence. */
   submitter: string;
-  /** evidence defines the evidence of misbehavior. */
-
   evidence?: Any;
 }
 /**
@@ -19,10 +16,7 @@ export interface MsgSubmitEvidence {
  */
 
 export interface MsgSubmitEvidenceSDKType {
-  /** submitter is the signer account address of evidence. */
   submitter: string;
-  /** evidence defines the evidence of misbehavior. */
-
   evidence?: AnySDKType;
 }
 /** MsgSubmitEvidenceResponse defines the Msg/SubmitEvidence response type. */

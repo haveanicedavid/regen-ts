@@ -10,41 +10,31 @@ export const createLCDClient = async ({
   return {
     cosmos: {
       auth: {
-        v1beta1: new (await import("./cosmos/auth/v1beta1/query.lcd")).LCDQueryClient({
+        v1beta1: new (await import("./auth/v1beta1/query.lcd")).LCDQueryClient({
           requestClient
         })
       },
       authz: {
-        v1beta1: new (await import("./cosmos/authz/v1beta1/query.lcd")).LCDQueryClient({
+        v1beta1: new (await import("./authz/v1beta1/query.lcd")).LCDQueryClient({
           requestClient
         })
       },
       bank: {
-        v1beta1: new (await import("./cosmos/bank/v1beta1/query.lcd")).LCDQueryClient({
+        v1beta1: new (await import("./bank/v1beta1/query.lcd")).LCDQueryClient({
           requestClient
         })
       },
       base: {
         node: {
-          v1beta1: new (await import("./cosmos/base/node/v1beta1/query.lcd")).LCDQueryClient({
+          v1beta1: new (await import("./base/node/v1beta1/query.lcd")).LCDQueryClient({
             requestClient
           })
         },
         tendermint: {
-          v1beta1: new (await import("./cosmos/base/tendermint/v1beta1/query.lcd")).LCDQueryClient({
+          v1beta1: new (await import("./base/tendermint/v1beta1/query.lcd")).LCDQueryClient({
             requestClient
           })
         }
-      },
-      circuit: {
-        v1: new (await import("./cosmos/circuit/v1/query.lcd")).LCDQueryClient({
-          requestClient
-        })
-      },
-      consensus: {
-        v1: new (await import("./cosmos/consensus/v1/query.lcd")).LCDQueryClient({
-          requestClient
-        })
       },
       distribution: {
         v1beta1: new (await import("./distribution/v1beta1/query.lcd")).LCDQueryClient({

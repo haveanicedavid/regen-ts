@@ -19,34 +19,6 @@ export interface QueryParamsResponseSDKType {
     /** params defines the parameters of the module. */
     params?: ParamsSDKType;
 }
-/** QueryValidatorDistributionInfoRequest is the request type for the Query/ValidatorDistributionInfo RPC method. */
-export interface QueryValidatorDistributionInfoRequest {
-    /** validator_address defines the validator address to query for. */
-    validatorAddress: string;
-}
-/** QueryValidatorDistributionInfoRequest is the request type for the Query/ValidatorDistributionInfo RPC method. */
-export interface QueryValidatorDistributionInfoRequestSDKType {
-    /** validator_address defines the validator address to query for. */
-    validator_address: string;
-}
-/** QueryValidatorDistributionInfoResponse is the response type for the Query/ValidatorDistributionInfo RPC method. */
-export interface QueryValidatorDistributionInfoResponse {
-    /** operator_address defines the validator operator address. */
-    operatorAddress: string;
-    /** self_bond_rewards defines the self delegations rewards. */
-    selfBondRewards: DecCoin[];
-    /** commission defines the commission the validator received. */
-    commission: DecCoin[];
-}
-/** QueryValidatorDistributionInfoResponse is the response type for the Query/ValidatorDistributionInfo RPC method. */
-export interface QueryValidatorDistributionInfoResponseSDKType {
-    /** operator_address defines the validator operator address. */
-    operator_address: string;
-    /** self_bond_rewards defines the self delegations rewards. */
-    self_bond_rewards: DecCoinSDKType[];
-    /** commission defines the commission the validator received. */
-    commission: DecCoinSDKType[];
-}
 /**
  * QueryValidatorOutstandingRewardsRequest is the request type for the
  * Query/ValidatorOutstandingRewards RPC method.
@@ -98,7 +70,7 @@ export interface QueryValidatorCommissionRequestSDKType {
  * Query/ValidatorCommission RPC method
  */
 export interface QueryValidatorCommissionResponse {
-    /** commission defines the commission the validator received. */
+    /** commission defines the commision the validator received. */
     commission?: ValidatorAccumulatedCommission;
 }
 /**
@@ -106,7 +78,7 @@ export interface QueryValidatorCommissionResponse {
  * Query/ValidatorCommission RPC method
  */
 export interface QueryValidatorCommissionResponseSDKType {
-    /** commission defines the commission the validator received. */
+    /** commission defines the commision the validator received. */
     commission?: ValidatorAccumulatedCommissionSDKType;
 }
 /**
@@ -334,20 +306,6 @@ export declare const QueryParamsResponse: {
     fromJSON(object: any): QueryParamsResponse;
     toJSON(message: QueryParamsResponse): unknown;
     fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
-};
-export declare const QueryValidatorDistributionInfoRequest: {
-    encode(message: QueryValidatorDistributionInfoRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryValidatorDistributionInfoRequest;
-    fromJSON(object: any): QueryValidatorDistributionInfoRequest;
-    toJSON(message: QueryValidatorDistributionInfoRequest): unknown;
-    fromPartial(object: Partial<QueryValidatorDistributionInfoRequest>): QueryValidatorDistributionInfoRequest;
-};
-export declare const QueryValidatorDistributionInfoResponse: {
-    encode(message: QueryValidatorDistributionInfoResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryValidatorDistributionInfoResponse;
-    fromJSON(object: any): QueryValidatorDistributionInfoResponse;
-    toJSON(message: QueryValidatorDistributionInfoResponse): unknown;
-    fromPartial(object: Partial<QueryValidatorDistributionInfoResponse>): QueryValidatorDistributionInfoResponse;
 };
 export declare const QueryValidatorOutstandingRewardsRequest: {
     encode(message: QueryValidatorOutstandingRewardsRequest, writer?: _m0.Writer): _m0.Writer;

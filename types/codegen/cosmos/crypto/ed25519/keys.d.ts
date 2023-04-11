@@ -20,14 +20,14 @@ export interface PubKeySDKType {
     key: Uint8Array;
 }
 /**
- * PrivKey defines a ed25519 private key.
+ * Deprecated: PrivKey defines a ed25519 private key.
  * NOTE: ed25519 keys must not be used in SDK apps except in a tendermint validator context.
  */
 export interface PrivKey {
     key: Uint8Array;
 }
 /**
- * PrivKey defines a ed25519 private key.
+ * Deprecated: PrivKey defines a ed25519 private key.
  * NOTE: ed25519 keys must not be used in SDK apps except in a tendermint validator context.
  */
 export interface PrivKeySDKType {

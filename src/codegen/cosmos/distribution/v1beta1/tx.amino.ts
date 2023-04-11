@@ -1,5 +1,5 @@
 import { AminoMsg } from "@cosmjs/amino";
-import { MsgSetWithdrawAddress, MsgWithdrawDelegatorReward, MsgWithdrawValidatorCommission, MsgFundCommunityPool, MsgUpdateParams, MsgCommunityPoolSpend, MsgDepositValidatorRewardsPool } from "./tx";
+import { MsgSetWithdrawAddress, MsgWithdrawDelegatorReward, MsgWithdrawValidatorCommission, MsgFundCommunityPool } from "./tx";
 export interface AminoMsgSetWithdrawAddress extends AminoMsg {
   type: "cosmos-sdk/MsgModifyWithdrawAddress";
   value: {
@@ -28,40 +28,6 @@ export interface AminoMsgFundCommunityPool extends AminoMsg {
       amount: string;
     }[];
     depositor: string;
-  };
-}
-export interface AminoMsgUpdateParams extends AminoMsg {
-  type: "cosmos-sdk/MsgUpdateParams";
-  value: {
-    authority: string;
-    params: {
-      community_tax: string;
-      base_proposer_reward: string;
-      bonus_proposer_reward: string;
-      withdraw_addr_enabled: boolean;
-    };
-  };
-}
-export interface AminoMsgCommunityPoolSpend extends AminoMsg {
-  type: "cosmos-sdk/MsgCommunityPoolSpend";
-  value: {
-    authority: string;
-    recipient: string;
-    amount: {
-      denom: string;
-      amount: string;
-    }[];
-  };
-}
-export interface AminoMsgDepositValidatorRewardsPool extends AminoMsg {
-  type: "cosmos-sdk/MsgDepositValidatorRewardsPool";
-  value: {
-    depositor: string;
-    validator_address: string;
-    amount: {
-      denom: string;
-      amount: string;
-    }[];
   };
 }
 export const AminoConverter = {
@@ -148,99 +114,6 @@ export const AminoConverter = {
           amount: el0.amount
         })),
         depositor
-      };
-    }
-  },
-  "/cosmos.distribution.v1beta1.MsgUpdateParams": {
-    aminoType: "cosmos-sdk/MsgUpdateParams",
-    toAmino: ({
-      authority,
-      params
-    }: MsgUpdateParams): AminoMsgUpdateParams["value"] => {
-      return {
-        authority,
-        params: {
-          community_tax: params.communityTax,
-          base_proposer_reward: params.baseProposerReward,
-          bonus_proposer_reward: params.bonusProposerReward,
-          withdraw_addr_enabled: params.withdrawAddrEnabled
-        }
-      };
-    },
-    fromAmino: ({
-      authority,
-      params
-    }: AminoMsgUpdateParams["value"]): MsgUpdateParams => {
-      return {
-        authority,
-        params: {
-          communityTax: params.community_tax,
-          baseProposerReward: params.base_proposer_reward,
-          bonusProposerReward: params.bonus_proposer_reward,
-          withdrawAddrEnabled: params.withdraw_addr_enabled
-        }
-      };
-    }
-  },
-  "/cosmos.distribution.v1beta1.MsgCommunityPoolSpend": {
-    aminoType: "cosmos-sdk/MsgCommunityPoolSpend",
-    toAmino: ({
-      authority,
-      recipient,
-      amount
-    }: MsgCommunityPoolSpend): AminoMsgCommunityPoolSpend["value"] => {
-      return {
-        authority,
-        recipient,
-        amount: amount.map(el0 => ({
-          denom: el0.denom,
-          amount: el0.amount
-        }))
-      };
-    },
-    fromAmino: ({
-      authority,
-      recipient,
-      amount
-    }: AminoMsgCommunityPoolSpend["value"]): MsgCommunityPoolSpend => {
-      return {
-        authority,
-        recipient,
-        amount: amount.map(el0 => ({
-          denom: el0.denom,
-          amount: el0.amount
-        }))
-      };
-    }
-  },
-  "/cosmos.distribution.v1beta1.MsgDepositValidatorRewardsPool": {
-    aminoType: "cosmos-sdk/MsgDepositValidatorRewardsPool",
-    toAmino: ({
-      depositor,
-      validatorAddress,
-      amount
-    }: MsgDepositValidatorRewardsPool): AminoMsgDepositValidatorRewardsPool["value"] => {
-      return {
-        depositor,
-        validator_address: validatorAddress,
-        amount: amount.map(el0 => ({
-          denom: el0.denom,
-          amount: el0.amount
-        }))
-      };
-    },
-    fromAmino: ({
-      depositor,
-      validator_address,
-      amount
-    }: AminoMsgDepositValidatorRewardsPool["value"]): MsgDepositValidatorRewardsPool => {
-      return {
-        depositor,
-        validatorAddress: validator_address,
-        amount: amount.map(el0 => ({
-          denom: el0.denom,
-          amount: el0.amount
-        }))
       };
     }
   }

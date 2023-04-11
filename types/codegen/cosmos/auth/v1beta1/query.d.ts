@@ -1,6 +1,6 @@
 import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
 import { Any, AnySDKType } from "../../../google/protobuf/any";
-import { Params, ParamsSDKType, BaseAccount, BaseAccountSDKType } from "./auth";
+import { Params, ParamsSDKType } from "./auth";
 import * as _m0 from "protobufjs/minimal";
 import { Long } from "../../../helpers";
 /**
@@ -226,20 +226,11 @@ export interface AddressStringToBytesResponseSDKType {
  */
 export interface QueryAccountAddressByIDRequest {
     /**
-     * Deprecated, use account_id instead
-     *
      * id is the account number of the address to be queried. This field
      * should have been an uint64 (like all account numbers), and will be
      * updated to uint64 in a future version of the auth query.
      */
-    /** @deprecated */
     id: Long;
-    /**
-     * account_id is the account number of the address to be queried.
-     *
-     * Since: cosmos-sdk 0.47
-     */
-    accountId: Long;
 }
 /**
  * QueryAccountAddressByIDRequest is the request type for AccountAddressByID rpc method
@@ -248,20 +239,11 @@ export interface QueryAccountAddressByIDRequest {
  */
 export interface QueryAccountAddressByIDRequestSDKType {
     /**
-     * Deprecated, use account_id instead
-     *
      * id is the account number of the address to be queried. This field
      * should have been an uint64 (like all account numbers), and will be
      * updated to uint64 in a future version of the auth query.
      */
-    /** @deprecated */
     id: Long;
-    /**
-     * account_id is the account number of the address to be queried.
-     *
-     * Since: cosmos-sdk 0.47
-     */
-    account_id: Long;
 }
 /**
  * QueryAccountAddressByIDResponse is the response type for AccountAddressByID rpc method
@@ -278,42 +260,6 @@ export interface QueryAccountAddressByIDResponse {
  */
 export interface QueryAccountAddressByIDResponseSDKType {
     account_address: string;
-}
-/**
- * QueryAccountInfoRequest is the Query/AccountInfo request type.
- *
- * Since: cosmos-sdk 0.47
- */
-export interface QueryAccountInfoRequest {
-    /** address is the account address string. */
-    address: string;
-}
-/**
- * QueryAccountInfoRequest is the Query/AccountInfo request type.
- *
- * Since: cosmos-sdk 0.47
- */
-export interface QueryAccountInfoRequestSDKType {
-    /** address is the account address string. */
-    address: string;
-}
-/**
- * QueryAccountInfoResponse is the Query/AccountInfo response type.
- *
- * Since: cosmos-sdk 0.47
- */
-export interface QueryAccountInfoResponse {
-    /** info is the account info which is represented by BaseAccount. */
-    info?: BaseAccount;
-}
-/**
- * QueryAccountInfoResponse is the Query/AccountInfo response type.
- *
- * Since: cosmos-sdk 0.47
- */
-export interface QueryAccountInfoResponseSDKType {
-    /** info is the account info which is represented by BaseAccount. */
-    info?: BaseAccountSDKType;
 }
 export declare const QueryAccountsRequest: {
     encode(message: QueryAccountsRequest, writer?: _m0.Writer): _m0.Writer;
@@ -440,18 +386,4 @@ export declare const QueryAccountAddressByIDResponse: {
     fromJSON(object: any): QueryAccountAddressByIDResponse;
     toJSON(message: QueryAccountAddressByIDResponse): unknown;
     fromPartial(object: Partial<QueryAccountAddressByIDResponse>): QueryAccountAddressByIDResponse;
-};
-export declare const QueryAccountInfoRequest: {
-    encode(message: QueryAccountInfoRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryAccountInfoRequest;
-    fromJSON(object: any): QueryAccountInfoRequest;
-    toJSON(message: QueryAccountInfoRequest): unknown;
-    fromPartial(object: Partial<QueryAccountInfoRequest>): QueryAccountInfoRequest;
-};
-export declare const QueryAccountInfoResponse: {
-    encode(message: QueryAccountInfoResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryAccountInfoResponse;
-    fromJSON(object: any): QueryAccountInfoResponse;
-    toJSON(message: QueryAccountInfoResponse): unknown;
-    fromPartial(object: Partial<QueryAccountInfoResponse>): QueryAccountInfoResponse;
 };

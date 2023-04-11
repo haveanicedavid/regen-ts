@@ -12,12 +12,6 @@ import * as _m0 from "protobufjs/minimal";
 export interface Config {
     /** modules are the module configurations for the app. */
     modules: ModuleConfig[];
-    /**
-     * golang_bindings specifies explicit interface to implementation type bindings which
-     * depinject uses to resolve interface inputs to provider functions.  The scope of this
-     * field's configuration is global (not module specific).
-     */
-    golangBindings: GolangBinding[];
 }
 /**
  * Config represents the configuration for a Cosmos SDK ABCI app.
@@ -31,12 +25,6 @@ export interface Config {
 export interface ConfigSDKType {
     /** modules are the module configurations for the app. */
     modules: ModuleConfigSDKType[];
-    /**
-     * golang_bindings specifies explicit interface to implementation type bindings which
-     * depinject uses to resolve interface inputs to provider functions.  The scope of this
-     * field's configuration is global (not module specific).
-     */
-    golang_bindings: GolangBindingSDKType[];
 }
 /** ModuleConfig is a module configuration for an app. */
 export interface ModuleConfig {
@@ -58,12 +46,6 @@ export interface ModuleConfig {
      * define a ModuleDescriptor using the cosmos.app.v1alpha1.is_module extension.
      */
     config?: Any;
-    /**
-     * golang_bindings specifies explicit interface to implementation type bindings which
-     * depinject uses to resolve interface inputs to provider functions.  The scope of this
-     * field's configuration is module specific.
-     */
-    golangBindings: GolangBinding[];
 }
 /** ModuleConfig is a module configuration for an app. */
 export interface ModuleConfigSDKType {
@@ -85,26 +67,6 @@ export interface ModuleConfigSDKType {
      * define a ModuleDescriptor using the cosmos.app.v1alpha1.is_module extension.
      */
     config?: AnySDKType;
-    /**
-     * golang_bindings specifies explicit interface to implementation type bindings which
-     * depinject uses to resolve interface inputs to provider functions.  The scope of this
-     * field's configuration is module specific.
-     */
-    golang_bindings: GolangBindingSDKType[];
-}
-/** GolangBinding is an explicit interface type to implementing type binding for dependency injection. */
-export interface GolangBinding {
-    /** interface_type is the interface type which will be bound to a specific implementation type */
-    interfaceType: string;
-    /** implementation is the implementing type which will be supplied when an input of type interface is requested */
-    implementation: string;
-}
-/** GolangBinding is an explicit interface type to implementing type binding for dependency injection. */
-export interface GolangBindingSDKType {
-    /** interface_type is the interface type which will be bound to a specific implementation type */
-    interface_type: string;
-    /** implementation is the implementing type which will be supplied when an input of type interface is requested */
-    implementation: string;
 }
 export declare const Config: {
     encode(message: Config, writer?: _m0.Writer): _m0.Writer;
@@ -119,11 +81,4 @@ export declare const ModuleConfig: {
     fromJSON(object: any): ModuleConfig;
     toJSON(message: ModuleConfig): unknown;
     fromPartial(object: Partial<ModuleConfig>): ModuleConfig;
-};
-export declare const GolangBinding: {
-    encode(message: GolangBinding, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): GolangBinding;
-    fromJSON(object: any): GolangBinding;
-    toJSON(message: GolangBinding): unknown;
-    fromPartial(object: Partial<GolangBinding>): GolangBinding;
 };
